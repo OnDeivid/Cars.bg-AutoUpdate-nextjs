@@ -1,0 +1,18 @@
+{
+  "name": "serverless-update",
+  "version": "1.0.0",
+  "main": "./bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./bot.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "chrome-aws-lambda": "^10.1.0",
+    "dotenv": "^16.4.5",
+    "puppeteer": "^23.8.0"
+  }
+}
