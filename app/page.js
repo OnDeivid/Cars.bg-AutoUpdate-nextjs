@@ -1,35 +1,20 @@
-const puppeteer = require('puppeteer'); // Use the full puppeteer package for local testing
-const chromium = require('chrome-aws-lambda');
-require('dotenv').config();
+const puppeteer = require('puppeteer')
 
-// Local function to simulate a serverless environment
-const bot = async (req, res) => {
+export default function page() {
+    autoUpdate()
+    return (
+        <div>page</div>
+    )
+}
+
+const autoUpdate = async () => {
     try {
-        // Replace with your actual credentials for testing (use .env in production)
-        const email = process.env.USER_EMAIL; // Replace with process.env.EMAIL
-        const password = process.env.USER_PASSWORD; // Replace with process.env.PASSWORD
-
-        if (!email || !password) {
-            console.error("Missing email or password");
-            return res.status(500).json({ error: "Missing email or password" });
-        }
-
-        // Launch browser in non-headless mode for visualization
-        const browser = await puppeteer.launch({
-            headless: true, // Production should be headless
-            executablePath: await chromium.executablePath,
-            args: [
-                '--no-sandbox',
-                '--disable-setuid-sandbox',
-                '--disable-dev-shm-usage',
-                '--disable-gpu',
-            ],
-        });
-
-        console.log('Browser launched');
+        const browser = await puppeteer.launch({ headless: true });
 
         const page = await browser.newPage();
-        await page.goto('https://www.cars.bg/loginpage.php?ref=https://www.cars.bg/carslist.php?open_menu=1');
+
+        const endpoint = 'https://www.cars.bg/loginpage.php?ref=https://www.cars.bg/carslist.php?open_menu=1';
+        await page.goto(endpoint);
         console.log('Navigated to login page');
 
         // Perform login
@@ -40,8 +25,8 @@ const bot = async (req, res) => {
 
         await page.waitForSelector('input#usernameLoginForm');
 
-        await page.type('input#usernameLoginForm', email);
-        await page.type('input[type="password"]', password);
+        await page.type('input#usernameLoginForm', 'dimitar7602');
+        await page.type('input[type="password"]', '7602111883Dd');
 
         await page.waitForSelector('form#loginForm', { visible: true });
 
@@ -51,7 +36,6 @@ const bot = async (req, res) => {
 
         await page.goto('https://www.cars.bg/my_carlist.php');
 
-        // Navigate to the car list page
         console.log('Navigated to the car list page');
 
         // Retrieve the length of the car list
@@ -83,9 +67,7 @@ const bot = async (req, res) => {
 
         await browser.close();
         console.log('Browser closed');
-        return res ? res.status(200).json({ message: 'Bot executed successfully' }) : console.log('Execution finished');
     } catch (error) {
         console.error('Error occurred:', error);
-        return res ? res.status(500).json({ error: 'An error occurred while running the bot' }) : console.log('Execution error');
     }
-};
+}
