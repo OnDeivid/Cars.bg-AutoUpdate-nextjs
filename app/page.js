@@ -2,29 +2,27 @@
 
 import { useEffect, useState } from "react";
 
-export default function page() {
-    const [state, setState] = useState('page')
+export default function Page() {
+    const [state, setState] = useState('page');
+    
     useEffect(() => {
         const fetchData = async () => {
             try {
-
-                const response = await fetch('/pages/api');
+                const response = await fetch('/api');
                 const data = await response.json();
-
-                return 'success'
-
+                return 'success'; 
             } catch (err) {
-
-                return 'error'
+                return 'error';
             }
-
         };
-        const data = fetchData();
-        setState(data)
-    }, []);
+
+
+        fetchData().then((data) => {
+            setState(data);
+        });
+    }, []); 
 
     return (
         <div>{state}</div>
-    )
+    );
 }
-
