@@ -8,7 +8,7 @@ export default function Page() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('/api');
+                const response = await fetch('/pages/api');
                 const data = await response.json();
                 return 'success'; 
             } catch (err) {

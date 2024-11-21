@@ -2,8 +2,9 @@ import puppeteer from "puppeteer";
 
 
 export async function GET() {
+  const startTime = Date.now();
+  const browser = await puppeteer.launch({ headless: true, slowMo: 1000 });
   try {
-    const browser = await puppeteer.launch({ headless: true });
 
     const page = await browser.newPage();
 
@@ -27,7 +28,7 @@ export async function GET() {
 
     await page.keyboard.press('Enter');
 
-    await page.waitForNavigation();
+    // await page.waitForNavigation();
 
     await page.goto('https://www.cars.bg/my_carlist.php');
 
@@ -61,8 +62,10 @@ export async function GET() {
     console.log('All items processed successfully');
 
     await browser.close();
+    const endTime = Date.now();
+    const executionTime = endTime - startTime;
     return new Response(
-      JSON.stringify({ message: 'All items processed successfully and browser closed.' }),
+      JSON.stringify({ message: executionTime }),
       {
         status: 200,
         headers: { 'Content-Type': 'application/json' },
@@ -71,6 +74,7 @@ export async function GET() {
   } catch (error) {
     // In case of an error, send the error message as the response
     console.error(error);
+    await browser.close();
     return new Response(
       JSON.stringify({ message: 'hello im ms error u dont like to see me right?!' }),
       {
