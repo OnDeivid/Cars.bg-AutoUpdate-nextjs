@@ -1,28 +1,23 @@
-'use client'
+import Head from "next/head";
+import Header from "./components/Header";
+import Main from "./components/Main";
+import Footer from "./components/Footer";
 
-import { useEffect, useState } from "react";
-
-export default function Page() {
-    const [state, setState] = useState('page');
-    
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch('/pages/api');
-                const data = await response.json();
-                return 'success'; 
-            } catch (err) {
-                return 'error';
-            }
-        };
-
-
-        fetchData().then((data) => {
-            setState(data);
-        });
-    }, []); 
-
+export default function page() {
     return (
-        <div>{state}</div>
+        <div className="text-black bg-black">
+            <Head>
+                <title>nine4</title>
+                <link rel="icon" href="/favicon.png" />
+            </Head>
+            <Main />
+            
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+
+            <Footer />
+        </div>
     );
 }
