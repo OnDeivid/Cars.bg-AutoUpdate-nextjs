@@ -30,6 +30,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (user) {
         const userDataCars = await prisma.carsData.findUnique({
           where: { userEmail: user.email },
+          select: {
+            userId: true,
+            userEmail: true,
+            carsEmail: true,
+          },
         });
 
         // Add the data to the JWT
