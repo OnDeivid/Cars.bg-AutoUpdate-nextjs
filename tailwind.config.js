@@ -12,6 +12,21 @@ module.exports = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      animation: {
+        'bounce-color': 'bounce-color 0.7s infinite',
+      },
+    },
+    keyframes: {
+      'bounce-color': {
+        '0%, 100%': {
+          transform: 'translateY(0px)',
+          background: 'linear-gradient(to right, #C75A14 20%, #FF7F32 100%)',
+        },
+        '50%': {
+          transform: 'translateY(0px)',
+          background: 'linear-gradient(to right, #FF7F32 20%, #C75A14 100%)',
+        },
+      },
     },
     screens: {
       sm: '180px',
