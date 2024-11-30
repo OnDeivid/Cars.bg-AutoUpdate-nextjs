@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 
 export default function page() {
     return (
-        <div className="text-black bg-black">
+        <div className="text-black bg-slate-900">
             <Head>
                 <title>nine4</title>
                 <link rel="icon" href="/favicon.png" />
@@ -14,8 +14,7 @@ export default function page() {
             
             <br></br>
             <br></br>
-            <br></br>
-            <br></br>
+
 
             <Footer />
         </div>
