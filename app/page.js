@@ -5,17 +5,12 @@ import Footer from "./components/Footer";
 
 export default function page() {
     return (
-        <div className="text-black bg-slate-900">
+        <div className="bg-custom-gray">
             <Head>
-                <title>nine4</title>
-                <link rel="icon" href="/favicon.png" />
             </Head>
             <Main />
-            
             <br></br>
             <br></br>
-
-
             <Footer />
         </div>
     );
