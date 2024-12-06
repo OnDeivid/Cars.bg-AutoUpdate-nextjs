@@ -13,6 +13,4 @@ const textEndpoint = {
     aboutUs: 'За Нас'
 }
 
-
-
-export { endpoints, textEndpoint };
+export { endpoints, textEndpoint, provider };
