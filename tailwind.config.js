@@ -9,8 +9,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        'custom-gray': '#212121',
+        'custom-white': '#d2cbc6',
+        'custom-light-gray': '#ACACAC',
+        'custom-input-color': '#F5AF00'
       },
       animation: {
         'bounce-color': 'bounce-color 0.7s infinite',
