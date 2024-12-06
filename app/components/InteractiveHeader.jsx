@@ -1,7 +1,9 @@
 'use client'
-
 import Link from 'next/link';
+
 import React, { useState } from 'react'
+
+import { endpoints } from '../CONST';
 
 export default function InteractiveHeader({ children }) {
 
@@ -10,13 +12,13 @@ export default function InteractiveHeader({ children }) {
   const secondChild = React.Children.toArray(children)[1];
 
   return (
-    //could be fixed
-    <header className="fixed top-0 w-full clearNav z-50">
+
+    <header className="stiky top-0 w-full bg-custom-gray">
       <div className="max-w-8xl mx-auto flex flex-wrap p-2 flex-col md:flex-row">
 
         <div className="flex flex-row  items-center justify-between md:p-1">
           <Link
-            href="/"
+            href={endpoints.home}
             className="flex text-xl text-white font-medium mb-1 md:mb-0"
           >AUTOMATION
           </Link>
@@ -50,7 +52,6 @@ export default function InteractiveHeader({ children }) {
             (navbarOpen ? " flex" : " hidden") 
           }
         >
-
           {firstChild}
         </div>
 

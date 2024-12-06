@@ -1,25 +1,13 @@
-import { auth } from '@/auth'
-import Link from 'next/link'
 import React from 'react'
+import Link from 'next/link'
+
+import { auth } from '@/auth'
+
+import { endpoints, textEndpoint } from '../CONST'
 
 export default async function HeaderOptions() {
+
     const session = await auth()
-
-    
-    const endpoints = {
-        home: '/',
-        getStarted: '/GetStarted',
-        aboutUs: '/aboutUs',
-        guide: '/guide'
-    }
-    const textEndpoint = {
-        home: 'Начало',
-        getStarted: 'Започни',
-        guide: 'Ръководство',
-        aboutUs: 'За Нас'
-    }
-
-
 
     return (
         <div className="text-center md:ml-auto md:mr-auto font-4 pt-0.5 md:pl-8 uppercase">
@@ -41,7 +29,6 @@ export default async function HeaderOptions() {
             <Link href={endpoints.aboutUs} className="mr-6 cursor-pointer text-xs sm:text-sm md:text-sm lg:text-xl text-gray-300 hover:text-white font-semibold tr04">
                 {textEndpoint.aboutUs}
             </Link>
-
 
         </div>
     )
