@@ -1,69 +1,53 @@
-import { auth, signIn, signOut } from '@/auth'
-import Image from 'next/image'
-import { permanentRedirect, redirect } from 'next/navigation'
-import React from 'react'
+import { auth, signIn } from '@/auth'
 
+import { Authenticated } from '@/app/middleware'
+import ProviderOption from '@/app/components/ProviderOption'
+import { redirect } from 'next/dist/server/api-utils';
 
 export default async function page() {
-    const session = await auth()
+    const session = await auth();
+    await Authenticated()
+    
     return (
-        <section className="dark:bg-black">
-            <div className="flex flex-col items-center justify-center px-6 py-0 mx-auto md:h-screen lg:py-0 mt-14">
-                <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
-                    <img className="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo" />
-                    Flowbite
-                </a>
-                <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-black dark:border-gray-100">
-                    <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-                        <h1 className="text-xl font-bold leading-tight text-center tracking-tight text-gray-900 md:text-2xl dark:text-white">
+        <section className="flex pt-20">
+            <div className="flex flex-col items-center justify-center mx-auto md:h-full px-4 lg:py-0 mt-0">
+                <div className="w-[115%] rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0  border-custom-input-color">
+                    <div className="p-6 space-y-4  md:space-y-6 sm:p-8 ">
+                        <h1 className="text-xl font-bold  leading-tight text-center tracking-tight text-gray-900 md:text-2xl dark:text-white">
                             Избери с какво да влезеш
                         </h1>
                         <div className="space-y-4 md:space-y-6">
 
+                            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gmail</label>
                             <div>
-                                <label htmlFor="gmail" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gmail</label>
-                                <button id="gmail" className="flex justify-between bg-slate-50 h-full p-2 w-full">
-                                    <div >
-                                        <p className='text-xl text-gray-700 font-bold mt-1 ml-14'>Влез с Google</p>
-                                    </div>
-                                    <Image src='https://cdn-icons-png.flaticon.com/128/5968/5968534.png' height={35} width={35} alt='options' />
-                                </button>
+                                <form className='bg-green-600' action={async () => {
+                                    'use server'
+                                    await signIn('google', { redirectTo: '/GetStarted' })
+                                }}>
+                                    <ProviderOption providerName={'Google'} />
+
+                                </form>
                             </div>
+                            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Facebook</label>
 
-                            <form action={async () => {
+                            <form className='bg-orange-300' action={async () => {
                                 'use server'
-
-                                await signOut({ redirectTo: '/' })
-                                redirect('/home')
+                                await signIn('facebook', { redirectTo: '/GetStarted' })
                             }}>
-                                <label htmlFor="gmail" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Facebook</label>
-                                <button id="gmail" className="flex justify-between bg-slate-50 h-full p-2 w-full">
-
-                                    <div>
-                                        <p className='text-xl text-gray-700 font-bold mt-1 ml-14'>Влез с Facebook</p>
-                                    </div>
-                                    <Image src='https://cdn-icons-png.flaticon.com/128/15047/15047435.png' height={35} width={35} alt='options' />
-                                </button>
+                                <ProviderOption providerName={'Facebook'} />
                             </form>
 
-                            <form action={async () => {
+                            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">GitHub</label>
+                            <form className='bg-green-600' action={async () => {
                                 'use server'
-                                await signIn('github', { redirectTo: '/' })
-
+                                await signIn('github', { redirectTo: '/GetStarted' })
 
                             }}>
-                                <label htmlFor="gmail" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">GitHub</label>
-                                <button id="gmail" className="flex justify-between bg-slate-50 h-full p-2 w-full">
-                                    <div >
-                                        <p className='text-xl text-gray-700 font-bold mt-1 ml-14'>Влез с GitHub</p>
-                                    </div>
-                                    <Image src='https://cdn-icons-png.flaticon.com/128/2111/2111432.png' height={35} width={35} alt='options' />
-
-                                </button>
+                                <ProviderOption providerName={'Github'} />
                             </form>
 
                             {/* <div>
-                                <label htmlFor="gmail" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Gmail</label>
+                                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Gmail</label>
                                 <button id="gmail" className="flex justify-around bg-orange-400 h-full p-4 w-full">
 
                                     <div className='justify-evenly'>
