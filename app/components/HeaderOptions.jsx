@@ -16,7 +16,7 @@ export default async function HeaderOptions() {
                 {textEndpoint.home}
             </Link>
 
-            {session?.user.userDataCars.userEmail || !session?.user.email ? null : (
+            {session?.user?.userDataCars?.userEmail || !session?.user.email ? null : (
                 <Link href={endpoints.getStarted} className="mr-6 cursor-pointer text-xs sm:text-sm md:text-sm lg:text-xl text-gray-300 hover:text-white font-semibold tr04">
                     {textEndpoint.getStarted}
                 </Link>
