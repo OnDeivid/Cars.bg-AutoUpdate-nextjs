@@ -13,4 +13,4 @@ const textEndpoint = {
     aboutUs: 'Нас'
 }
 
-export { endpoints, textEndpoint, provider };
+export { endpoints, textEndpoint };
