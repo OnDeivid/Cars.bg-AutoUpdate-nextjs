@@ -27,7 +27,7 @@ export default async function Main() {
           {carsEmail ? (
             <>
               <Link
-                className="inline-flex items-center py-3 font-semibold text-black transition duration-500 ease-in-out transform bg-transparent bg-white px-7 text-md md:mt-0 hover:text-black hover:bg-white focus:shadow-outline" href={endpoints.guide}>
+                className="inline-flex items-center py-3 font-semibold text-black transition duration-500 ease-in-out transform bg-white px-7 text-md md:mt-0 hover:text-black hover:bg-white focus:shadow-outline" href={endpoints.guide}>
                 <div className="flex text-lg">
                   <span className="justify-center">Ръководство</span>
                 </div>
@@ -37,14 +37,14 @@ export default async function Main() {
           ) : session?.user ? (
             <>
               <Link
-                className="inline-flex items-center py-3 font-semibold text-black transition duration-500 ease-in-out transform bg-transparent bg-white px-7 text-md md:mt-0 hover:text-black hover:bg-white focus:shadow-outline"
+                className="inline-flex items-center py-3 font-semibold text-black transition duration-500 ease-in-out transform bg-white px-7 text-md md:mt-0 hover:text-black hover:bg-white focus:shadow-outline"
                 href={endpoints.home}>
                 <div className="flex text-lg">
                   <span className="justify-center">Прочети за нас </span>
                 </div>
               </Link>
               <Link
-                className="inline-flex items-center py-3 font-semibold tracking-tighter text-white transition-colors duration-700 ease-in-out transform bg-transparent ml-1 bg-blue-600 px-16 text-md md:mt-0 focus:shadow-outline focus:border focus:border-blue-500 hover:bg-custom-input-color"
+                className="inline-flex items-center py-3 font-semibold tracking-tighter text-white transition-colors duration-700 ease-in-out transform ml-1 bg-blue-600 px-16 text-md md:mt-0 focus:shadow-outline focus:border focus:border-blue-500 hover:bg-custom-input-color"
                 href={endpoints.getStarted}
               >
                 <div className="flex text-lg">
@@ -55,14 +55,14 @@ export default async function Main() {
           ) : (
             <>
               <Link
-                className="inline-flex items-center py-3 font-semibold text-black transition duration-500 ease-in-out transform bg-transparent bg-white px-7 text-md md:mt-0 hover:text-black hover:bg-white focus:shadow-outline"
+                className="inline-flex items-center py-3 font-semibold text-black transition duration-500 ease-in-out transform bg-white px-7 text-md md:mt-0 hover:text-black hover:bg-white focus:shadow-outline"
                 href={endpoints.home}>
                 <div className="flex text-lg">
                   <span className="justify-center">Прочети за нас </span>
                 </div>
               </Link>
               <Link
-                className="inline-flex items-center py-3 font-semibold tracking-tighter text-white transition-colors duration-700 ease-in-out transform bg-transparent ml-1 bg-blue-600 px-16 text-md md:mt-0 focus:shadow-outline focus:border focus:border-blue-500 hover:bg-custom-input-color"
+                className="inline-flex items-center py-3 font-semibold tracking-tighter text-white transition-colors duration-700 ease-in-out transform ml-1 bg-blue-700 px-16 text-md md:mt-0 focus:shadow-outline focus:border focus:border-blue-500 hover:bg-custom-input-color"
                 href={endpoints.login}
               >
                 <div className="flex text-lg">
