@@ -1,10 +1,8 @@
 import { encryptPassword } from "@/app/utils/crypto";
 import { PrismaClient } from "@prisma/client";
-import bcrypt from 'bcrypt'
 const prisma = new PrismaClient();
 
 export async function POST(req) {
-
     try {
         const { userEmail, carsEmail, password, confirmPassword } = await req.json();
 
