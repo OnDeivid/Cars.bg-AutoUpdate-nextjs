@@ -10,7 +10,7 @@ const textEndpoint = {
     home: 'Начало',
     getStarted: 'Започни',
     guide: 'Ръководство',
-    aboutUs: 'За Нас'
+    aboutUs: 'Нас'
 }
 
 export { endpoints, textEndpoint, provider };

@@ -1,0 +1,95 @@
+'use client'
+import React from 'react';
+import useForm from '../hooks/useForm';
+import useFormValidation from '../hooks/useFormValidation';
+
+export default function FormInputsValue({ error }) {
+    const { formValue, onChangeValue } = useForm({ carsEmail: '', password: '', confirmPassword: '' });
+    const errors = {};
+    function useFormValidation(formData) {
+        if (!formData?.carsEmail || formData?.carsEmail.trim() === "") {
+            errors.carsEmail = "Потребителското име е задължително.";
+        }
+        if (!formData.password || formData.password.length < 8) {
+            errors.password = "Паролата трябва да е поне 8 символа.";
+        } else if (!/[A-Za-z]/.test(formData.password)) {
+            errors.password = "Паролата трябва да съдържа поне една буква.";
+        } else if (!/[0-9]/.test(formData.password)) {
+            errors.password = "Паролата трябва да съдържа поне една цифра.";
+        } else if (!/[!@#$%^&*(),.?":{}|<>]/.test(formData.password)) {
+            errors.password = "Паролата трябва да съдържа поне един специален символ.";
+        }
+
+        if (formData.confirmPassword !== formData.password) {
+            errors.confirmPassword = "Паролите не съвпадат.";
+        }
+
+        return errors;
+    }
+
+    useFormValidation(formValue);
+    return (
+        <>
+            <div>
+                <label
+                    htmlFor="carsEmail"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                    Името с което влизаш в cars.bg
+                </label>
+                <input
+                    onChange={onChangeValue}
+                    type="text"
+                    name="carsEmail"
+                    id="carsEmail"
+                    
+                    className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-3 dark:bg-custom-white dark:border-gray-600 dark:placeholder-gray-800 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Your Email, Username or Number"
+                    value={formValue.carsEmail}
+                    required
+                />
+                <p className="text-red-600 text-center pt-1 text-sm">{errors.carsEmail}</p>
+            </div>
+
+            <div>
+                <label
+                    htmlFor="password"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                    Паролата с която влизаш в cars.bg
+                </label>
+                <input
+                    onChange={onChangeValue}
+                    type="password"
+                    name="password"
+                    id="password"
+                    placeholder="••••••••"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-3 dark:bg-custom-white dark:border-gray-600 dark:placeholder-gray-800 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    value={formValue.password}
+                    required
+                />
+                <p className='text-red-600 text-center pt-1 text-sm'>{errors.password}</p>
+            </div>
+
+            <div>
+                <label
+                    htmlFor="confirmPassword"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                    Потвърди паролата с която влизаш в cars.bg
+                </label>
+                <input
+                    onChange={onChangeValue}
+                    type="password"
+                    name="confirmPassword"
+                    id="confirmPassword"
+                    placeholder="••••••••"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-3 dark:bg-custom-white dark:border-gray-600 dark:placeholder-gray-800 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    value={formValue.confirmPassword}
+                    required
+                />
+                <p className="text-red-600 text-center pt-1 text-sm">{errors.confirmPassword}</p>
+            </div>
+        </>
+    );
+}
