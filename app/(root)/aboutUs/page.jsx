@@ -17,11 +17,11 @@ export default function page() {
                         <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
                             <div className="sm:text-center lg:text-left">
                                 <h2 className="my-6 text-2xl tracking-tight font-extrabold text-gray-900 sm:text-3xl md:text-4xl ">
-                                    About Us
+                                    За Нас
                                 </h2>
 
                                 <p>
-                                    At AutoMation, we are passionate about simplifying complex processes through innovative automation solutions. Our goal is to help businesses and individuals achieve more with less effort by leveraging technology to handle repetitive and time-consuming tasks.
+                                    В AutoMation, ние сме страстни към опростяването на сложни процеси чрез иновативни решения за автоматизация. Нашата цел е да помогнем на бизнеса и индивидуалните потребители да постигнат повече с по-малко усилия, като използват технологиите за справяне с повторяеми и отнемащи време задачи.
                                 </p>
                             </div>
                         </main>
@@ -37,15 +37,11 @@ export default function page() {
 
                         <div className="lg:text-center">
                             <h2
-                                className="font-heading mb-4 bg-custom-white px-4 py-2 rounded-lg md:w-64 md:mx-auto text-xs font-semibold tracking-widest text-black uppercase title-font">
-                                Why choose us?
+                                className="font-heading mb-4 text-center bg-custom-white px-4 py-2 rounded-lg md:w-64 md:mx-auto text-xs font-semibold tracking-widest text-black uppercase title-font">
+                                .............
                             </h2>
-                            <p className="font-heading mt-2 text-3xl leading-8 font-semibold tracking-tight text-custom-white sm:text-4xl">
-                                We know tech, we know finance. We are fintech experts.
-                            </p>
-                            <p className="mt-4 max-w-2xl text-lg text-custom-light-gray lg:mx-auto">
-                                We know how to handle taxation for all the
-                                countried we operate in. We care for our customers and help them manage cashflows.
+                            <p className="font-heading text-center mt-2 text-3xl leading-8 font-semibold tracking-tight text-custom-white sm:text-4xl">
+                                Как работи?
                             </p>
                         </div>
 
@@ -57,12 +53,10 @@ export default function page() {
                                             className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary-500 text-white">
                                             <img src="https://www.svgrepo.com/show/503163/api-settings.svg" />
                                         </div>
-                                        <p className="font-heading ml-16 text-lg leading-6 font-bold text-custom-light-gray">Powerful API</p>
+                                        <p className="font-heading ml-16 text-lg leading-6 font-bold text-custom-light-gray">Автоматично влизане</p>
                                     </dt>
                                     <dd className="mt-2 ml-16 text-base text-custom-white">
-                                        Lorem ipsum, dolor sit amet consectetur
-                                        adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate
-                                        blanditiis ratione.
+                                        Автоматизацията използва паролите и имейлите, предоставени от потребителите
                                     </dd>
                                 </div>
                                 <div className="relative">
@@ -71,13 +65,10 @@ export default function page() {
                                             className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary-500 text-white">
                                             <img src="https://www.svgrepo.com/show/503138/webpack.svg" />
                                         </div>
-                                        <p className="font-heading ml-16 text-lg leading-6 font-bold text-custom-light-gray">Easy to integrate
-                                            SDK
-                                        </p>
+                                        <p className="font-heading ml-16 text-lg leading-6 font-bold text-custom-light-gray">Извършване на действия</p>
                                     </dt>
-                                    <dd className="mt-2 ml-16 text-base text-custom-white"> Lorem ipsum, dolor sit amet consectetur
-                                        adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate
-                                        blanditiis ratione.
+                                    <dd className="mt-2 ml-16 text-base text-custom-white">
+                                    След като се логне, автоматизацията може да изпълнява специфични действия на сайта като актуализиране на съдържание.
                                     </dd>
                                 </div>
                                 <div className="relative">
@@ -87,27 +78,10 @@ export default function page() {
                                             <img src="https://www.svgrepo.com/show/511771/dashboard-671.svg" />
 
                                         </div>
-                                        <p className="font-heading ml-16 text-lg leading-6 font-bold text-custom-light-gray">Low Transaction Cost
+                                        <p className="font-heading ml-16 text-lg leading-6 font-bold text-custom-light-gray">Пълно информирано съгласие
                                         </p>
                                     </dt>
-                                    <dd className="mt-2 ml-16 text-base text-custom-white"> Lorem ipsum, dolor sit amet consectetur
-                                        adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate
-                                        blanditiis ratione.
-                                    </dd>
-                                </div>
-                                <div className="relative">
-                                    <dt>
-                                        <div
-                                            className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary-500 text-white">
-                                            <img src="https://www.svgrepo.com/show/76267/free-commercial-label.svg" />
-
-                                        </div>
-                                        <p className="font-heading ml-16 text-lg leading-6 font-bold text-custom-light-gray">Powerful Dashboard
-                                        </p>
-                                    </dt>
-                                    <dd className="mt-2 ml-16 text-base text-custom-white"> Lorem ipsum, dolor sit amet consectetur
-                                        adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate
-                                        blanditiis ratione.
+                                    <dd className="mt-2 ml-16 text-base text-custom-white">Всички действия, които автоматизацията изпълнява, се основават на предварително получено съгласие от потребителите. Те трябва да бъдат наясно с процеса и какво точно включва автоматизацията, като дават своето изрично съгласие преди да бъде използвана.
                                     </dd>
                                 </div>
                             </dl>
