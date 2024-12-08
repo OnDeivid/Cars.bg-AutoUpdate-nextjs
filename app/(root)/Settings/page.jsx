@@ -5,8 +5,6 @@ export default async function page() {
     const session = await auth()
     return (
         <>
-            <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet" />
-
             <div className="mx-4 min-h-screen max-w-screen-xl text-custom-light-gray sm:mx-8 xl:mx-auto">
                 <h2 className="relative py-6 text-xl font-semibold text-center"></h2>
                 <div className="grid grid-cols-8 pt-3 sm:grid-cols-10">

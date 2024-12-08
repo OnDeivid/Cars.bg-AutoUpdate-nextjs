@@ -1,10 +1,11 @@
+import Image from "next/image"
 import Link from "next/link"
 
 export default function UserImage({ image }) {
 
     return (
         <div>
-            <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" className="w-7 h-7 rounded-full cursor-pointer" src={image} alt="User dropdown" />
+            <Image id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" className="w-7 h-7 rounded-full cursor-pointer" src={image} alt="User dropdown" />
             <div id="userDropdown" className="z-8 flex right-4 absolute mt-4 bg-white divide-y divide-gray-100 rounded-lg shadow w-22 dark:bg-custom-gray dark:divide-gray-200">
                 <ul className="py-2 text-sm text-gray-700 dark:text-custom-white" aria-labelledby="avatarButton">
                     <li>

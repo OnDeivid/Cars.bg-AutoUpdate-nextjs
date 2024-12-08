@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 
 export default function Page() {
@@ -44,7 +45,7 @@ export default function Page() {
                         {item.description}
                     </p>
                     <div className="relative w-full mx-auto">
-                        <img
+                        <Image
                             src={item.image}
                             className="w-full h-[auto] object-cover rounded-md"
                             alt={`Step ${index + 1}`}
