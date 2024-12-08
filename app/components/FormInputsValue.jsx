@@ -2,10 +2,11 @@
 import React from 'react';
 import useForm from '../hooks/useForm';
 
+
 export default function FormInputsValue({ error }) {
     const { formValue, onChangeValue } = useForm({ carsEmail: '', password: '', confirmPassword: '' });
     const errors = {};
-    
+
     function useFormValidation(formData) {
         if (!formData?.carsEmail || formData?.carsEmail.trim() === "") {
             errors.carsEmail = "Потребителското име е задължително.";

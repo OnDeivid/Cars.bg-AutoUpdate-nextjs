@@ -4,6 +4,7 @@ import { auth, signOut } from '@/auth';
 import { endpoints } from '../CONST';
 import UserImage from './UserImage';
 
+
 export default async function AuthActionButton() {
     const session = await auth();
 

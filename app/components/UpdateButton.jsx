@@ -2,7 +2,9 @@ import React from 'react'
 import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
 
+
 import { endpoints } from '../CONST';
+
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();

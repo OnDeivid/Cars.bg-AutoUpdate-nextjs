@@ -2,8 +2,8 @@ import React from 'react'
 import Link from 'next/link'
 
 import { auth } from '@/auth'
-
 import { endpoints, textEndpoint } from '../CONST'
+
 
 export default async function HeaderOptions() {
 

@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { auth } from "@/auth";
 
-import { endpoints } from "../CONST";
 
+import { endpoints } from "../CONST";
 import UpdateButton from "./UpdateButton";
+
 
 export default async function Main() {
   const session = await auth();
