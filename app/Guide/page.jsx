@@ -49,6 +49,8 @@ export default function Page() {
                             src={item.image}
                             className="w-full h-[auto] object-cover rounded-md"
                             alt={`Step ${index + 1}`}
+                            width={10}
+                            height={10}
                         />
                     </div>
                     <div className="bg-white w-full h-1 mx-auto mt-4 p-6"></div>
