@@ -52,6 +52,10 @@ export default function InteractiveHeader({ children }) {
             "md:flex flex-grow items-center " + " flex"
           }
         >
+          {/* className={
+            "md:flex flex-grow items-center " +
+            (navbarOpen ? " flex" : " hidden") 
+          } */}
           {firstChild}
         </div>
 
