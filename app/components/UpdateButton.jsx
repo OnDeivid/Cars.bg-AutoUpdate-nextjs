@@ -53,10 +53,10 @@ export default async function UpdateButton() {
     return (
         <button
             onClick={onUpdate}
-            className="inline-flex items-center py-3  hover:bg-custom-input-color font-semibold tracking-tighter text-white transition-all duration-1000 ease-in-out transform bg-transparent ml-1 bg-orange-600 px-12 text-md md:mt-0 focus:shadow-outline focus:border focus:border-orange-500"
+            className="inline-flex items-center py-3 hover:bg-custom-input-color font-semibold tracking-tighter text-white transition-all duration-1000 ease-in-out transform ml-1 bg-orange-600 px-12 text-md md:mt-0 focus:shadow-outline focus:border focus:border-orange-500"
         >
             <div className="flex text-lg">
-                <span className="justify-center">Актолизиране</span>
+                <span className="justify-center">Актулизиране</span>
             </div>
         </button>
     )
