@@ -16,17 +16,12 @@ module.exports = {
       },
       animation: {
         'bounce-color': 'bounce-color 0.7s infinite',
+        spin: 'spin 1s linear infinite',
       },
-    },
-    keyframes: {
-      'bounce-color': {
-        '0%, 100%': {
-          transform: 'translateY(0px)',
-          background: 'linear-gradient(to right, #C75A14 20%, #FF7F32 100%)',
-        },
-        '50%': {
-          transform: 'translateY(0px)',
-          background: 'linear-gradient(to right, #FF7F32 20%, #C75A14 100%)',
+      keyframes: {
+        'bounce-color': {
+          '0%, 100%': { transform: 'translateY(-10%)', color: 'red' },
+          '50%': { transform: 'translateY(0)', color: 'blue' },
         },
       },
     },

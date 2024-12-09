@@ -1,4 +1,4 @@
-import { auth, signIn } from '@/auth'
+import { auth } from '@/auth'
 import React from 'react'
 
 export default async function GetStartedServerForm() {
