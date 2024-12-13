@@ -8,6 +8,7 @@ export default function UpdateButtonState({ update }) {
     useEffect(() => {
         const updateState = localStorage.getItem('updateCars');
         setUpdated(updateState === 'true');
+        console.log('oppsy')
     }, []);
 
     const handleUpdate = () => {
