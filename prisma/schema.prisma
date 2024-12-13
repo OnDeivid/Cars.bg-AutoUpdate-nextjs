@@ -68,9 +68,12 @@ model CarsData {
   id              String   @id @default(auto()) @map("_id") @db.ObjectId
   userId          String   @unique @db.ObjectId
   userEmail       String   @unique
-  carsEmail       String   
+  carsEmail       String
   password        String
   confirmPassword String
+  updateDate      DateTime? @default(now())
+  updatedToday    Boolean?
+  updateError     String?
   createdAt       DateTime @default(now())
 }
 

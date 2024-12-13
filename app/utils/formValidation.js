@@ -9,7 +9,7 @@ export default function formValidation(formData) {
         return true
     } else if (!/[0-9]/.test(formData.password)) {
         return true
-    } else if (!/[!@#$%^&*(),.?":{}|<>]/.test(formData.password)) {
+    } else if (!/[A-Za-z0-9]/.test(formData.password)) {
         return true
     }
 
