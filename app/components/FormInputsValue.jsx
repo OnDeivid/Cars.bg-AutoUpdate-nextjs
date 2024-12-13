@@ -17,9 +17,8 @@ export default function FormInputsValue({ error }) {
             errors.password = "Паролата трябва да съдържа поне една буква.";
         } else if (!/[0-9]/.test(formData.password)) {
             errors.password = "Паролата трябва да съдържа поне една цифра.";
-        } else if (!/[!@#$%^&*(),.?":{}|<>]/.test(formData.password)) {
-            errors.password = "Паролата трябва да съдържа поне един специален символ.";
-        }
+        } 
+        
 
         if (formData.confirmPassword !== formData.password) {
             errors.confirmPassword = "Паролите не съвпадат.";
