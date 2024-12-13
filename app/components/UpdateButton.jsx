@@ -5,6 +5,7 @@ import { PrismaClient } from '@prisma/client';
 
 import { endpoints } from '../CONST';
 import UpdateButtonState from './UpdateButtonState';
+import OnLocalStorageDelete from './OnLocalStorageDelete';
 
 const prisma = new PrismaClient();
 
@@ -14,6 +15,44 @@ export default async function UpdateButton() {
 
     const carsEmail = session?.user?.userDataCars?.carsEmail
     const userEmail = session?.user.email
+
+    if (userEmail) {
+        if (!carsEmail) {
+            redirect(endpoints.getStarted)
+        }
+    }
+
+    if (!userEmail) {
+        redirect(endpoints.login)
+    }
+
+
+    const data = await prisma.carsData.findFirst({
+        where: {
+            userEmail: userEmail,
+        },
+        select: {
+            updatedToday: true,
+            updateError: true,
+            updateDate: true
+        },
+    });
+
+    const currentDate = new Date().toDateString();
+    const lastUpdateDate = new Date(data?.updateDate).toDateString();
+    const onNextDay = lastUpdateDate < currentDate
+    if (onNextDay) {
+        await prisma.carsData.update({
+            where: {
+                userEmail: userEmail,
+            },
+            data: {
+                updatedToday: false,
+                updateDate: new Date(),
+                updateError: ''
+            },
+        })
+    }
 
     const onUpdate = async () => {
         'use server'
@@ -25,24 +64,24 @@ export default async function UpdateButton() {
         }
 
         if (!userEmail) {
-            redirect('/Login')
+            redirect(endpoints.login)
         }
 
-        const response = await fetch(`http://localhost:3000/pages/api/OnCarsUpdate`, {
+        await fetch(`http://localhost:3000/pages/api/OnCarsUpdate`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({ session: session }),
         });
-        console.log(response)
     }
     return (
-        // <button
-        //     onClick={onUpdate}
-        //     className="inline-flex items-center py-3 hover:bg-custom-input-color font-semibold tracking-tighter text-white transition-all duration-1000 ease-in-out transform ml-1 bg-orange-600 px-12 text-md md:mt-0 focus:shadow-outline focus:border focus:border-orange-500"
-        // >
-            <UpdateButtonState update={onUpdate} />
-        // </button>
+        <>
+            <OnLocalStorageDelete onNextDay={onNextDay} />
+            {!data?.updatedToday ? (<UpdateButtonState update={onUpdate} />)
+                : data?.updateError == 'success' ?
+                    (<div className='text-green-600 mt-2 text-lg font-bold uppercase'>Браво колите бяха успешно ъпдейтнати </div>)
+                    : (<><div className='text-red-600 mt-2 text-lg font-bold uppercase'>Грешка!!!: {data?.updateError} </div> <span className='text-yellow-400'>Наш служител ще се погрижи да актуализира колите вместо вас и ще разгледа проблема. Ако опитът за актуализация е неуспешен, ще се свърже с вас възможно най-скоро, за да ви окаже съдействие!</span></>)}
+        </>
     )
 }
