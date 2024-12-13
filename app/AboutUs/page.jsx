@@ -28,7 +28,7 @@ export default function page() {
                     </div>
                 </div>
                 <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-                <Image className="h-56 w-full object-cover object-top sm:h-72 md:h-96 lg:w-full lg:h-full" src="https://images.unsplash.com/photo-1538688423619-a81d3f23454b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="team" />
+                <Image className="h-56 w-full object-cover object-top sm:h-72 md:h-96 lg:w-full lg:h-full" src="https://images.unsplash.com/photo-1538688423619-a81d3f23454b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width={500} height={500} alt="team" />
                 </div>
             </div>
             <section className="">
@@ -51,7 +51,7 @@ export default function page() {
                                     <dt>
                                         <div
                                             className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary-500 text-white">
-                                            <Image src="https://www.svgrepo.com/show/503163/api-settings.svg" alt='automation' />
+                                            <Image src="https://www.svgrepo.com/show/503163/api-settings.svg" width={500} height={500} alt='automation' />
                                         </div>
                                         <p className="font-heading ml-16 text-lg leading-6 font-bold text-custom-light-gray">Автоматично влизане</p>
                                     </dt>
@@ -63,7 +63,7 @@ export default function page() {
                                     <dt>
                                         <div
                                             className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary-500 text-white">
-                                            <Image src="https://www.svgrepo.com/show/503138/webpack.svg" alt='action'/>
+                                            <Image src="https://www.svgrepo.com/show/503138/webpack.svg" width={1000} height={1000} alt='action'/>
                                         </div>
                                         <p className="font-heading ml-16 text-lg leading-6 font-bold text-custom-light-gray">Извършване на действия</p>
                                     </dt>
@@ -75,7 +75,7 @@ export default function page() {
                                     <dt>
                                         <div
                                             className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary-500 text-white">
-                                            <Image src="https://www.svgrepo.com/show/511771/dashboard-671.svg" alt='actions'/>
+                                            <Image src="https://www.svgrepo.com/show/511771/dashboard-671.svg" width={500} height={500} alt='actions'/>
 
                                         </div>
                                         <p className="font-heading ml-16 text-lg leading-6 font-bold text-custom-light-gray">Пълно информирано съгласие
