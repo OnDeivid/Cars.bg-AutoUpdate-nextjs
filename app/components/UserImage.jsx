@@ -5,7 +5,9 @@ export default function UserImage({ image }) {
 
     return (
         <div>
-            <Image id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" className="w-7 h-7 rounded-full cursor-pointer" src={image} width={100} height={100} alt="User dropdown" />
+            <Link href="/Settings" passHref>
+                    <Image id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" className="w-7 h-7 rounded-full cursor-pointer" src={image} width={100} height={100} alt="User dropdown" />
+            </Link>
             <div id="userDropdown" className="z-8 flex right-4 absolute mt-4 bg-white divide-y divide-gray-100 rounded-lg shadow w-22 dark:bg-custom-gray dark:divide-gray-200">
                 <ul className="py-2 text-sm text-gray-700 dark:text-custom-white" aria-labelledby="avatarButton">
                     <li>
