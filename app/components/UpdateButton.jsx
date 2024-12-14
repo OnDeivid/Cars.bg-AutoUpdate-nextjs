@@ -1,9 +1,9 @@
-import { auth } from '@/auth';
+import { auth, signOut } from '@/auth';
 import { redirect } from 'next/navigation';
-
 import { PrismaClient } from '@prisma/client';
 
 import { endpoints } from '../CONST';
+
 import UpdateButtonState from './UpdateButtonState';
 import OnLocalStorageDelete from './OnLocalStorageDelete';
 
@@ -26,7 +26,6 @@ export default async function UpdateButton() {
         redirect(endpoints.login)
     }
 
-
     const data = await prisma.carsData.findFirst({
         where: {
             userEmail: userEmail,
@@ -41,7 +40,12 @@ export default async function UpdateButton() {
     const currentDate = new Date().toDateString();
     const lastUpdateDate = new Date(data?.updateDate).toDateString();
     const onNextDay = lastUpdateDate < currentDate
+    console.log(onNextDay)
     if (onNextDay) {
+
+        if (!userEmail) {
+            return
+        }
         await prisma.carsData.update({
             where: {
                 userEmail: userEmail,

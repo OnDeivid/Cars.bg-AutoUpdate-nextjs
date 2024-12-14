@@ -10,8 +10,9 @@ export default function UpdateButtonState({ update }) {
         setUpdated(updateState === 'true');
         console.log('oppsy')
     }, []);
-
+    
     const handleUpdate = () => {
+        localStorage.setItem('updateDate', new Date().toDateString())
         localStorage.setItem('updateCars', 'true');
         setUpdated(true);
         update();
@@ -49,7 +50,7 @@ export default function UpdateButtonState({ update }) {
                         />
                     </svg>
                     <span className="sr-only">Loading...</span>
-                    <p className='text-white text-xl'>Колите са в процес на ъпдейтване</p>
+                    <p className='text-white text-xl'>Колите скоро ще започнат да се актолизират</p>
                 </div>
             )}
         </div>
