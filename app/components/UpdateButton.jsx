@@ -1,4 +1,4 @@
-import { auth, signOut } from '@/auth';
+import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
 import { PrismaClient } from '@prisma/client';
 
@@ -37,15 +37,16 @@ export default async function UpdateButton() {
         },
     });
 
-    const currentDate = new Date().toDateString();
-    const lastUpdateDate = new Date(data?.updateDate).toDateString();
+    const currentDate = new Date().setHours(0, 0, 0, 0);;
+    const lastUpdateDate = new Date(data?.updateDate).setHours(0, 0, 0, 0);;
     const onNextDay = lastUpdateDate < currentDate
-    console.log(onNextDay)
+
     if (onNextDay) {
 
         if (!userEmail) {
             return
         }
+
         await prisma.carsData.update({
             where: {
                 userEmail: userEmail,
@@ -71,21 +72,25 @@ export default async function UpdateButton() {
             redirect(endpoints.login)
         }
 
-        await fetch(`http://localhost:3000/pages/api/OnCarsUpdate`, {
+        const response = await fetch(`http://localhost:3000/pages/api/OnCarsUpdate`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({ session: session }),
         });
+
+        return response.ok
     }
+
     return (
         <>
-            <OnLocalStorageDelete onNextDay={onNextDay} />
-            {!data?.updatedToday ? (<UpdateButtonState update={onUpdate} />)
+
+            {!data?.updatedToday ? (<><UpdateButtonState update={onUpdate} /> <OnLocalStorageDelete onNextDay={onNextDay} /></>)
                 : data?.updateError == 'success' ?
-                    (<div className='text-green-600 mt-2 text-lg font-bold uppercase'>Браво колите бяха успешно ъпдейтнати </div>)
-                    : (<><div className='text-red-600 mt-2 text-lg font-bold uppercase'>Грешка!!!: {data?.updateError} </div> <span className='text-yellow-400'>Наш служител ще се погрижи да актуализира колите вместо вас и ще разгледа проблема. Ако опитът за актуализация е неуспешен, ще се свърже с вас възможно най-скоро, за да ви окаже съдействие!</span></>)}
+                    (<><div className='text-green-600 mt-2 text-lg font-bold uppercase'>Браво колите бяха успешно ъпдейтнати </div> <OnLocalStorageDelete onNextDay={onNextDay} /></>)
+                    : (<><OnLocalStorageDelete onNextDay={onNextDay} /><div className='text-red-600 mt-2 text-lg font-bold uppercase'>Грешка!!!: {data?.updateError} </div> <span className='text-yellow-400'>Наш служител ще се погрижи да актуализира колите вместо вас и ще разгледа проблема. Ако опитът за актуализация е неуспешен, ще се свърже с вас възможно най-скоро, за да ви окаже съдействие!</span></>)}
+
         </>
     )
 }
