@@ -4,18 +4,34 @@ import React, { useEffect, useState } from 'react';
 
 export default function UpdateButtonState({ update }) {
     const [updated, setUpdated] = useState(null);
+    const [res, setRes] = useState('notSended')
 
     useEffect(() => {
         const updateState = localStorage.getItem('updateCars');
         setUpdated(updateState === 'true');
-        console.log('oppsy')
+
+        const intervalId = setInterval(() => {
+            if (!localStorage.getItem('updateCars') && update) {
+                setUpdated(false)
+            }
+
+        }, 1000);
+
+        return () => {
+            clearInterval(intervalId);
+        };
     }, []);
-    
-    const handleUpdate = () => {
+
+    const handleUpdate = async () => {
         localStorage.setItem('updateDate', new Date().toDateString())
         localStorage.setItem('updateCars', 'true');
         setUpdated(true);
-        update();
+
+        const result = await update();
+        setRes(result)
+        if (!result) {
+            localStorage.removeItem('updateCars')
+        }
     };
 
     if (updated === null) {
@@ -49,8 +65,18 @@ export default function UpdateButtonState({ update }) {
                             fill="currentFill"
                         />
                     </svg>
-                    <span className="sr-only">Loading...</span>
-                    <p className='text-white text-xl'>Колите скоро ще започнат да се актолизират</p>
+                    {res !== 'notSended' ?
+                        res ?
+                            <>
+                                <span className="sr-only">Loading...</span>
+                                <p className='text-white text-xl'>Колите скоро ще започнат да се Актуализират</p>
+                            </> :
+                            <>
+                                <p className='text-yellow-400 text-xl'>Извиняваме се, но в момента услугата не е достъпна. Моля, опитайте отново по-късно.</p>
+                                <p className='text-green-400 text-xl'>Услугата не отговаря в момента. Моля, презаредете страницата и опитайте отново. </p>
+                            </>
+                        : null
+                    }
                 </div>
             )}
         </div>
