@@ -12,7 +12,6 @@ export default function formValidation(formData) {
     } else if (!/[A-Za-z0-9]/.test(formData.password)) {
         return true
     }
-
     if (formData.confirmPassword !== formData.password) {
         return true
     }
