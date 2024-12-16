@@ -1,13 +1,12 @@
 'use client';
 import { useRouter } from 'next/navigation';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export default function OnLocalStorageDelete({ onNextDay }) {
     const router = useRouter();
-
+    const [state, setState] = useState(false)
     useEffect(() => {
         if (onNextDay) {
-            console.log('Data has been deleted!');
             localStorage.removeItem('updateCars');
         }
 
@@ -15,14 +14,11 @@ export default function OnLocalStorageDelete({ onNextDay }) {
             const updateDate = localStorage.getItem('updateDate');
             const currentDate = new Date().toDateString();
 
-
-
-            console.log('Client',new Date(updateDate) < new Date(currentDate))
             if (new Date(updateDate) < new Date(currentDate)) {
                 localStorage.setItem('updateDate', currentDate);
                 localStorage.removeItem('updateCars');
             }
-            router.push('/');
+            setState(prev => !prev)
         }, 10000);
 
         return () => {
@@ -30,5 +26,14 @@ export default function OnLocalStorageDelete({ onNextDay }) {
         };
     }, [onNextDay, router]);
 
-    return (<div></div>)
+    function refresh() {
+        router.push('/')
+    }
+    return (
+        <div className='text-white bg-orange-400 text-2xl w-auto p-2
+         cursor-pointer mt-8 mx-auto' onClick={refresh}
+        >
+            Щракни тук, ако искаш да обновиш!
+        </div>
+    )
 }
