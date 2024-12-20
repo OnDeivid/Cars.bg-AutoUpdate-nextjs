@@ -24,6 +24,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="bg-blacks">
+      <head>
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#8936FF" />
+        <link rel="icon" href="/icon512_rounded.png" sizes="512x512" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable}  antialiased`}
       >
