@@ -42,7 +42,6 @@ export default async function UpdateButton() {
     const onNextDay = lastUpdateDate < currentDate
 
     if (onNextDay) {
-
         if (!userEmail) {
             return
         }
@@ -72,6 +71,7 @@ export default async function UpdateButton() {
             redirect(endpoints.login)
         }
 
+
         const response = await fetch(`http://localhost:3000/pages/api/OnCarsUpdate`, {
             method: 'POST',
             headers: {
@@ -85,11 +85,12 @@ export default async function UpdateButton() {
 
     return (
         <>
-
             {!data?.updatedToday ? (<><UpdateButtonState update={onUpdate} /> <OnLocalStorageDelete onNextDay={onNextDay} /></>)
                 : data?.updateError == 'success' ?
-                    (<><div className='text-green-600 mt-2 text-lg font-bold uppercase'>Браво колите бяха успешно ъпдейтнати </div> <OnLocalStorageDelete onNextDay={onNextDay} /></>)
-                    : (<><OnLocalStorageDelete onNextDay={onNextDay} /><div className='text-red-600 mt-2 text-lg font-bold uppercase'>Грешка!!!: {data?.updateError} </div> <span className='text-yellow-400'>Наш служител ще се погрижи да актуализира колите вместо вас и ще разгледа проблема. Ако опитът за актуализация е неуспешен, ще се свърже с вас възможно най-скоро, за да ви окаже съдействие!</span></>)}
+                    (<><div className='text-green-600 mt-2 font-bold uppercase'>Колите бяха успешно Обновени! </div> <OnLocalStorageDelete onNextDay={onNextDay} /></>)
+                    :
+                    (<><OnLocalStorageDelete onNextDay={onNextDay} /><div className='text-red-600 mt-2 text-md font-bold uppercase'>Грешка!: {data?.updateError}</div>
+                        <span className='text-yellow-400 text-sm'>Наш служител ще се погрижи да актуализира колите вместо вас и ще разгледа проблема. Ако опитът за актуализация е неуспешен, ще се свърже с вас възможно най-скоро, за да ви окаже съдействие!</span></>)}
 
         </>
     )
