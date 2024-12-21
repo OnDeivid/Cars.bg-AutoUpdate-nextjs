@@ -17,6 +17,11 @@ export default function OnLocalStorageDelete({ onNextDay }) {
             if (new Date(updateDate) < new Date(currentDate)) {
                 localStorage.setItem('updateDate', currentDate);
                 localStorage.removeItem('updateCars');
+                localStorage.removeItem('reqRes');
+
+                router.push('/')
+                router.push('/')
+
             }
             setState(prev => !prev)
         }, 10000);
@@ -30,10 +35,12 @@ export default function OnLocalStorageDelete({ onNextDay }) {
         router.push('/')
     }
     return (
-        <div className='text-white bg-orange-400 text-2xl w-auto p-2
-         cursor-pointer mt-8 mx-auto' onClick={refresh}
-        >
-            Щракни тук, ако искаш да обновиш!
-        </div>
+        <>
+            <div className='text-white border-y-2  border-custom-input-color sm:text-sm md:text-md lg:text-lg xl:-text-xl rounded-lg uppercase p-2
+            cursor-pointer w-[40%] sm:mt-3 md:mt-3 lg:mt-3 xl:mt-4 mx-auto ' onClick={refresh}
+            >
+                провери!
+            </div>
+        </>
     )
 }
