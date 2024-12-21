@@ -40,10 +40,9 @@ export default function InstallApp() {
 
     return (
         <div>
-            <button onClick={handleInstallClick} disabled={!installPromptEvent}>
+            {installPromptEvent ? <button className='bg-custom-input-color p-1.5 rounded-xl text-blue-700 font-semibold mt-2 mb-3 ml-3 animate-bounce-item' onClick={handleInstallClick} disabled={!installPromptEvent}>
                 Install App
-            </button>
-            {!installPromptEvent && <p>Install prompt is not available yet.</p>}
+            </button> : <button className='bg-custom-input-color p-1.5 rounded-xl text-blue-700 font-semibold mt-2 mb-3 ml-3 animate-bounce-item' >Install App</button>}
         </div>
     );
 }
