@@ -11,31 +11,31 @@ export default async function Main() {
   const session = await auth();
   const carsEmail = session?.user?.userDataCars?.carsEmail;
 
+
   return (
-    <section className="text-gray-600  bg-gradient-to-t bg-custom-gray h-screen body-font">
-      <div className="max-w-6xl pt-40 border-custom-input-color rounded-3xl border-y-2 w-full bg-red pb-24 mx-auto">
-        <h1 className="text-center font-bold text-custom-white mb-6 text-2xl sm:text-4xl md:text-4xl lg:text-6xl xl:text-6xl">
+    <section className="text-gray-600  bg-custom-gray h-screen body-font">
+      <div className="max-w-6xl mb-2 sm:pt-40 md:pt-48 lg:pt-48 xl:pt-48 border-custom-input-color rounded-3xl sm:-mt-11 md:mt-14 lg:-mt-1 xl:-mt-1 border-y-2 w-full bg-red pb-24 mx-auto">
+        <h1 className="text-center font-bold text-custom-white mb-2 sm:-mt-14 md:-mt-6 lg:-mt-3 xl:mt-1 text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-6xl">
           Премахни скучните повтарящи се действия с нас
         </h1>
-        <br></br>
-        <h2 className="text-2xl font-4 font-semibold lh-6 ld-04 pb-11 text-gray-600 text-center">
+        <br/>
+        <h2 className="text-xl font-4 font-semibold lh-6 ld-04 pb-11 text-gray-600 text-center">
           ние ще опростим деня ти
-          <br />
           нека свършим скучните неща вместо теб
         </h2>
         <br></br>
         <div className="ml-0 text-center">
 
           {carsEmail ? (
-            <>
-              <Link
-                className="inline-flex items-center py-3 font-semibold text-black transition duration-500 ease-in-out transform bg-white px-7 text-md md:mt-0 hover:text-black hover:bg-white focus:shadow-outline" href={endpoints.guide}>
+            <div className="-mt-10">
+              {/* <Link
+                className="inline-flex items-center py-3 mb-1 font-semibold text-black transition duration-500 ease-in-out transform bg-white px-7 text-md md:mt-0 hover:text-black hover:bg-white focus:shadow-outline" href={endpoints.guide}>
                 <div className="flex text-lg">
                   <span className="justify-center">Ръководство</span>
                 </div>
-              </Link>
+              </Link> */}
               <UpdateButton />
-            </>
+            </div>
           ) : session?.user ? (
             <>
               <Link
@@ -57,7 +57,7 @@ export default async function Main() {
           ) : (
             <>
               <Link
-                className="inline-flex items-center py-3 font-semibold text-black transition duration-500 ease-in-out transform bg-white px-7 text-md md:mt-0 hover:text-black hover:bg-white focus:shadow-outline"
+                className="inline-flex items-center py-3 font-semibold text-black transition duration-500 ease-in-out transform bg-white px-7 text-md -mt-11 hover:text-black hover:bg-white focus:shadow-outline"
                 href={endpoints.home}>
                 <div className="flex text-lg">
                   <span className="justify-center">Прочети за нас </span>
