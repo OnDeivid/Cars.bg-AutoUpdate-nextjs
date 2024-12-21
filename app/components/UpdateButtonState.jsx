@@ -7,20 +7,36 @@ export default function UpdateButtonState({ update }) {
     const [res, setRes] = useState('notSended')
 
     useEffect(() => {
+
+        const sendReq = localStorage.getItem('reqRes')
+
+        sendReq != null ? setRes(sendReq) : null
         const updateState = localStorage.getItem('updateCars');
         setUpdated(updateState === 'true');
 
-        const intervalId = setInterval(() => {
+        const interval1 = setInterval(() => {
             if (!localStorage.getItem('updateCars') && update) {
                 setUpdated(false)
             }
-
         }, 1000);
 
+        const interval2 = setInterval(() => {
+            if (localStorage.getItem('futureTimer')) {
+                localStorage.removeItem('updateCars')
+                localStorage.removeItem('futureTimer')
+                localStorage.setItem('reqRes', 'notSended')
+                setRes('notSended')
+
+            }
+        }, 30000);
+
         return () => {
-            clearInterval(intervalId);
+            clearInterval(interval1);
+            clearInterval(interval2);
         };
     }, []);
+
+
 
     const handleUpdate = async () => {
         localStorage.setItem('updateDate', new Date().toDateString())
@@ -28,9 +44,13 @@ export default function UpdateButtonState({ update }) {
         setUpdated(true);
 
         const result = await update();
-        setRes(result)
+
+        setRes(result.toString())
+        localStorage.setItem('reqRes', result.toString())
         if (!result) {
-            localStorage.removeItem('updateCars')
+            const currentTimer = new Date();
+            const futureTimer = new Date(currentTimer.getTime() + 20 * 1000);
+            localStorage.setItem('futureTimer', futureTimer.toISOString());
         }
     };
 
@@ -43,9 +63,9 @@ export default function UpdateButtonState({ update }) {
             {!updated ? (
                 <div
                     onClick={handleUpdate}
-                    className="inline-flex items-center py-3 hover:bg-custom-input-color font-semibold tracking-tighter text-white transition-colors duration-1000 ease-in-out transform ml-1 bg-orange-600 px-12 text-md md:mt-0 focus:shadow-outline focus:border focus:border-orange-500"
+                    className="inline-flex items-center py-3 hover:bg-custom-input-color font-semibold tracking-tighter text-white transition-colors duration-1000 ease-in-out transform bg-orange-600 px-12 text-md md:mt-0 focus:shadow-outline focus:border focus:border-orange-500"
                 >
-                    <span className="justify-center">Актуализиране</span>
+                    <span className="justify-center cursor-pointer">Обнови</span>
                 </div>
             ) : (
                 <div role="status">
@@ -65,18 +85,17 @@ export default function UpdateButtonState({ update }) {
                             fill="currentFill"
                         />
                     </svg>
-                    {res !== 'notSended' ?
-                        res ?
-                            <>
-                                <span className="sr-only">Loading...</span>
-                                <p className='text-white text-xl'>Колите скоро ще започнат да се Актуализират</p>
-                            </> :
-                            <>
-                                <p className='text-yellow-400 text-xl'>Извиняваме се, но в момента услугата не е достъпна. Моля, опитайте отново по-късно.</p>
-                                <p className='text-green-400 text-xl'>Услугата не отговаря в момента. Моля, презаредете страницата и опитайте отново. </p>
-                            </>
-                        : null
-                    }
+                    {res == 'true' ? (
+                        <>
+                            <span className="sr-only">Loading...</span>
+                            <p className='text-white text-xl'>Колите скоро ще започнат да се Обновяват!</p>
+                        </>
+                    ) : res == 'false' ? (
+                        <>
+                            <p className='text-yellow-400 text-xl'>Извиняваме се, но в момента услугата не е достъпна. Моля, опитайте отново по-късно.</p>
+                            <p className='text-green-400 text-sm'>Изчакайте и опитайте отново това съобщение ще се самоизтрие.</p>
+                        </>
+                    ) : null}
                 </div>
             )}
         </div>
