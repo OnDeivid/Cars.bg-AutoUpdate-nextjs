@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import Header from "./components/Header";
+import Head from "next/head";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -24,11 +25,19 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="bg-blacks">
-      <head>
+      <Head>
         <link rel="manifest" href="/manifest.json" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="theme-color" content="#8936FF" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <link rel="icon" href="/icon512_rounded.png" sizes="512x512" />
-      </head>
+
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="msapplication-TileColor" content="#8936FF" />
+        <meta name="msapplication-TileImage" content="/icon512_rounded.png" />
+        <meta name="msapplication-config" content="/browserconfig.xml" />
+
+      </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable}  antialiased`}
       >

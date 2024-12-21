@@ -2,10 +2,8 @@ import { auth, signIn } from '@/auth'
 
 import { Authenticated } from '@/app/middleware'
 import ProviderOption from '@/app/components/ProviderOption'
-import { redirect } from 'next/dist/server/api-utils';
 
 export default async function page() {
-    const session = await auth();
     await Authenticated()
     
     return (
