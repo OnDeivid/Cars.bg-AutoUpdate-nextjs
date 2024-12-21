@@ -14,7 +14,7 @@ export default async function Main() {
 
 
   return (
-    <section className="text-gray-600  bg-custom-gray h-screen body-font">
+    <section className="text-gray-600  bg-custom-gray h-[100%] w-full body-font">
       <div className="max-w-6xl mb-2 sm:pt-40 md:pt-48 lg:pt-48 xl:pt-48 border-custom-input-color rounded-3xl sm:-mt-11 md:mt-14 lg:-mt-1 xl:-mt-1 border-y-2 w-full bg-red pb-24 mx-auto">
         <h1 className="text-center font-bold text-custom-white mb-2 sm:-mt-14 md:-mt-6 lg:-mt-3 xl:mt-1 text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-6xl">
           Премахни скучните повтарящи се действия с нас
@@ -31,12 +31,6 @@ export default async function Main() {
         <div className="ml-0 text-center">
           {carsEmail ? (
             <div className="-mt-10">
-              {/* <Link
-                className="inline-flex items-center py-3 mb-1 font-semibold text-black transition duration-500 ease-in-out transform bg-white px-7 text-md md:mt-0 hover:text-black hover:bg-white focus:shadow-outline" href={endpoints.guide}>
-                <div className="flex text-lg">
-                  <span className="justify-center">Ръководство</span>
-                </div>
-              </Link> */}
               <UpdateButton />
             </div>
           ) : session?.user ? (
