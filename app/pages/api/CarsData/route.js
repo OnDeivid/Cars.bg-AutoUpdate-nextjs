@@ -1,5 +1,6 @@
 import { encryptPassword } from "@/app/utils/crypto";
 import { PrismaClient } from "@prisma/client";
+
 const prisma = new PrismaClient();
 
 export async function POST(req) {
@@ -17,10 +18,9 @@ export async function POST(req) {
         const userId = data.id
 
         const hashedPassword = await encryptPassword(password)
-        console.log(hashedPassword)
 
         const newEntry = await prisma.carsData.create({
-            data: { userId, userEmail, carsEmail, password: hashedPassword, confirmPassword },
+            data: { userId, userEmail, carsEmail, password: hashedPassword, confirmPassword, updatedToday: false, },
         });
 
 
