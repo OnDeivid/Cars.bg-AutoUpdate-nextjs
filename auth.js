@@ -13,7 +13,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   callbacks: {
 
     async session({ session, token }) {
-    
+      const prisma = new PrismaClient();
       session.user.userCarsData = await prisma.carsData.findUnique({
             where: { userEmail: session.user.email },
             select: {
