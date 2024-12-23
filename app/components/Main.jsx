@@ -10,7 +10,7 @@ import MyComponent from "./OnInstallApp";
 
 export default async function Main() {
   const session = await auth();
-  const carsEmail = session?.user?.userDataCars?.carsEmail;
+  // const carsEmail = session?.user?.userDataCars?.carsEmail;
 
 
   return (
