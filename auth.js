@@ -14,7 +14,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
     async session({ session, token }) {
       const prisma = new PrismaClient();
-      session.user.userCarsData = await prisma.carsData.findUnique({
+      const data=await prisma.carsData.findUnique({
             where: { userEmail: session.user.email },
             select: {
                 userId: true,
@@ -22,6 +22,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
                 carsEmail: true,
             },
         });
+        session.user.userCarsData = data||{}
       return session;
     },
   }
