@@ -3,6 +3,7 @@
 //  import Google from "next-auth/providers/google"
 //  import Facebook from 'next-auth/providers/facebook'
 
+import { PrismaClient } from "@prisma/client";
 import NextAuth from "next-auth"
 import GitHub from "next-auth/providers/github"
  
@@ -12,7 +13,15 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   callbacks: {
 
     async session({ session, token }) {
-      session.user.userCarsData={ok:'we good'}
+    
+      session.user.userCarsData = await prisma.carsData.findUnique({
+            where: { userEmail: session.user.email },
+            select: {
+                userId: true,
+                userEmail: true,
+                carsEmail: true,
+            },
+        });
       return session;
     },
   }
