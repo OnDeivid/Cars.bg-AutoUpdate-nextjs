@@ -11,7 +11,16 @@ const prisma = new PrismaClient();
 export const { handlers, auth, signIn, signOut } = NextAuth({
   providers: [GitHub],
   session: { strategy: 'jwt' },
+  callbacks: {
+    async jwt({ token, user }) {
 
+      return token;
+    },
+    async session({ session, token }) {
+      session.user.userDataCars = token.userDataCars || {};
+      return session;
+    },
+  }
 })
 
 //  export const { handlers, signIn, signOut, auth } = NextAuth({
