@@ -21,7 +21,6 @@ export default function OnLocalStorageDelete({ onNextDay }) {
 
                 router.push('/')
                 router.push('/')
-
             }
             setState(prev => !prev)
         }, 10000);
