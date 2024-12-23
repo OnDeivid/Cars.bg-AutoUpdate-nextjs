@@ -7,6 +7,7 @@ export default async function page() {
     await Authenticated()
     
     return (
+        
         <section className="flex pt-20">
             <div className="flex flex-col items-center justify-center mx-auto md:h-full px-4 lg:py-0 mt-0">
                 <div className="w-[115%] rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0  border-custom-input-color">
