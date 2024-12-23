@@ -17,7 +17,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       return token;
     },
     async session({ session, token }) {
-      const response= await fetch('http://localhost:3000/pages/api/UserLogin', {
+      const response= await fetch('https://your-app.vercel.app/pages/api/UserLogin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
