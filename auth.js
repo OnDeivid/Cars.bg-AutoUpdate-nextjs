@@ -3,35 +3,19 @@
 //  import Google from "next-auth/providers/google"
 //  import Facebook from 'next-auth/providers/facebook'
 
-import { PrismaClient } from "@prisma/client";
 import NextAuth from "next-auth"
 import GitHub from "next-auth/providers/github"
  
-const prisma = new PrismaClient();
 export const { handlers, auth, signIn, signOut } = NextAuth({
   providers: [GitHub],
   session: { strategy: 'jwt' },
-  // callbacks: {
-  //   async jwt({ token, user }) {
+  callbacks: {
 
-  //     return token;
-  //   },
-  //   async session({ session, token }) {
-  //     // const response= await fetch('https://your-app.vercel.app/pages/api/UserLogin', {
-  //     //   method: 'POST',
-  //     //   headers: {
-  //     //     'Content-Type': 'application/json',
-  //     //   },
-  //     //   body: JSON.stringify({userEmail:session.user.email}),
-  //     // });
-
-  //     //   const userDataCars = await response.json();
-  //       // session.user.userDataCars=userDataCars||{itsNOTaddingNow:'we sad!'}
-  //       console.log(userDataCars)
-      
-  //     return session;
-  //   },
-  // }
+    async session({ session, token }) {
+      session.userCarsData={ok:'we good'}
+      return session;
+    },
+  }
 })
 
 //  export const { handlers, signIn, signOut, auth } = NextAuth({
