@@ -23,28 +23,28 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     })
   ],
   session: { strategy: 'jwt' },
-  callbacks: {
-    async jwt({ token, user }) {
+  // callbacks: {
+  //   async jwt({ token, user }) {
 
-      if (user) {
-        const userDataCars = await prisma.carsData.findUnique({
-          where: { userEmail: user.email },
-          select: {
-            userId: true,
-            userEmail: true,
-            carsEmail: true,
-          },
-        });
+  //     if (user) {
+  //       const userDataCars = await prisma.carsData.findUnique({
+  //         where: { userEmail: user.email },
+  //         select: {
+  //           userId: true,
+  //           userEmail: true,
+  //           carsEmail: true,
+  //         },
+  //       });
 
-        token.userDataCars = userDataCars || {};
-      }
+  //       token.userDataCars = userDataCars || {};
+  //     }
 
-      return token;
-    },
-    async session({ session, token }) {
-      session.user.userDataCars = token.userDataCars || {};
-      return session;
-    },
-  }
+  //     return token;
+  //   },
+  //   async session({ session, token }) {
+  //     session.user.userDataCars = token.userDataCars || {};
+  //     return session;
+  //   },
+  // }
 
 })

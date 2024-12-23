@@ -20,7 +20,7 @@ export default async function Main() {
           Премахни скучните повтарящи се действия с нас
         </h1>
         <br />
-        <MyComponent />
+        {/* <MyComponent /> */}
 
         <h2 className="text-xl font-4 font-semibold lh-6 ld-04 pb-11 text-gray-600 text-center">
           ние ще опростим деня ти
@@ -29,7 +29,7 @@ export default async function Main() {
         <br></br>
 
         <div className="ml-0 text-center">
-          {carsEmail ? (
+          {/* {carsEmail ? (
             <div className="-mt-10">
               <UpdateButton />
             </div>
@@ -69,7 +69,7 @@ export default async function Main() {
                 </div>
               </Link>
             </>
-          )}
+          )} */}
 
         </div>
       </div>
