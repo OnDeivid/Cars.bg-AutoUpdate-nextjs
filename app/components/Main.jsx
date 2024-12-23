@@ -18,7 +18,6 @@ export default async function Main() {
         <h1 className="text-center font-bold text-custom-white mb-2 sm:-mt-14 md:-mt-6 lg:-mt-3 xl:mt-1 text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-6xl">
           Премахни скучните повтарящи се действия с нас
         </h1>
-
         <br />
         {/* <MyComponent /> */}
 

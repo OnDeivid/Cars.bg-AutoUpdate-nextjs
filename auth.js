@@ -26,7 +26,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       });
 
         const userDataCars = await response.json();
-        session.user.userDataCars=userDataCars||{itsNOTaddingNow:'we sad!'}
+        // session.user.userDataCars=userDataCars||{itsNOTaddingNow:'we sad!'}
+        console.log(userDataCars)
       
       return session;
     },
