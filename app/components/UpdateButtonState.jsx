@@ -15,7 +15,9 @@ export default function UpdateButtonState({ update }) {
         setUpdated(updateState === 'true');
 
         const interval1 = setInterval(() => {
-            if (!localStorage.getItem('updateCars') && update) {
+            // if (!localStorage.getItem('updateCars') && update) {
+
+            if (!localStorage.getItem('updateCars')) {
                 setUpdated(false)
             }
         }, 1000);
