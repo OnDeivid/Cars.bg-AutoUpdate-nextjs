@@ -1,10 +1,9 @@
-import { signIn } from '@/auth'
+import { signIn, signOut } from "@/auth"
+import ProviderOption from "../components/ProviderOption"
 
-import { Authenticated } from '@/app/middleware'
-import ProviderOption from '@/app/components/ProviderOption'
+
 
 export default async function page() {
-    // await Authenticated()
     
     return (
         <section className="flex pt-20">
@@ -38,10 +37,11 @@ export default async function page() {
                             <label className="block mb-2 text-sm font-medium text-custom-white dark:text-white">GitHub</label>
                             <form className='bg-green-600' action={async () => {
                                 'use server'
-                                await signIn('github', { redirectTo: '/GetStarted' })
+                                await signIn('github', { redirectTo: '/' })
 
                             }}>
-                                <ProviderOption providerName={'Github'} />
+                                {/* <ProviderOption providerName={'Github'} /> */}
+                                <button type="submit">click here to log in with github</button>
                             </form>
                             <br></br>
                         </div>
