@@ -9,20 +9,21 @@ import { prisma } from "@/prismas"
 export const { handlers, signIn, signOut, auth } = NextAuth({
   adapter: PrismaAdapter(prisma),
   providers: [
-    GitHub({
-      clientId: process.env.AUTH_GITHUB_ID,
-      clientSecret: process.env.AUTH_GITHUB_SECRET,
-    }),
-    Google({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    }),
-    Facebook({
-      clientId: process.env.AUTH_FACEBOOK_ID,
-      clientSecret: process.env.AUTH_FACEBOOK_SECRET
-    })
+    GitHub
+    // GitHub({
+    //   clientId: process.env.AUTH_GITHUB_ID,
+    //   clientSecret: process.env.AUTH_GITHUB_SECRET,
+    // }),
+    // Google({
+    //   clientId: process.env.GOOGLE_CLIENT_ID,
+    //   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    // }),
+    // Facebook({
+    //   clientId: process.env.AUTH_FACEBOOK_ID,
+    //   clientSecret: process.env.AUTH_FACEBOOK_SECRET
+    // })
   ],
-  session: { strategy: 'jwt' },
+  // session: { strategy: 'jwt' },
   // callbacks: {
   //   async jwt({ token, user }) {
 
