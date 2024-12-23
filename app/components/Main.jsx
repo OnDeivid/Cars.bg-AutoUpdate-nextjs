@@ -12,7 +12,6 @@ export default async function Main() {
   const session = await auth();
   // const carsEmail = session?.user?.userDataCars?.carsEmail;
   console.log(session)
-
   return (
     <section className="text-gray-600  bg-custom-gray h-[100%] w-full body-font">
       <div className="max-w-6xl mb-2 sm:pt-40 md:pt-48 lg:pt-48 xl:pt-48 border-custom-input-color rounded-3xl sm:-mt-11 md:mt-14 lg:-mt-1 xl:-mt-1 border-y-2 w-full bg-red pb-24 mx-auto">

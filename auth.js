@@ -17,7 +17,17 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       return token;
     },
     async session({ session, token }) {
-      session.user.userDataCars = token.userDataCars || {};
+      const response= await fetch('http://localhost:3001/pages/api/UserLogin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({userEmail:session.user.email}),
+      });
+
+        const userDataCars = await response.json();
+        session.user.userDataCars=userDataCars
+      
       return session;
     },
   }
