@@ -12,7 +12,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   callbacks: {
 
     async session({ session, token }) {
-      session.userCarsData={ok:'we good'}
+      session.user.userCarsData={ok:'we good'}
       return session;
     },
   }
