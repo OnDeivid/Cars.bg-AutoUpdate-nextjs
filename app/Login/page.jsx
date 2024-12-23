@@ -4,7 +4,7 @@ import ProviderOption from "../components/ProviderOption"
 
 
 export default async function page() {
-    
+
     return (
         <section className="flex pt-20">
             <div className="flex flex-col items-center justify-center mx-auto md:h-full px-4 lg:py-0 mt-0">
