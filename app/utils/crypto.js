@@ -1,6 +1,7 @@
 import crypto from 'crypto';
 
-const ENCRYPTION_KEY = '0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef';
+const ENCRYPTION_KEY = process.env.HiddenKey
+console.log(ENCRYPTION_KEY)
 const ALGORITHM = 'aes-256-cbc';
 
 export async function encryptPassword(password) {

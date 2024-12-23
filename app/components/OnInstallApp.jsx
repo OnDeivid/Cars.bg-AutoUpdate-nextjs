@@ -9,8 +9,8 @@ export default function InstallApp() {
         console.log(isStandalone)
         const handleBeforeInstallPrompt = (event) => {
             console.log('beforeinstallprompt event fired:', event);
-            event.preventDefault(); // Prevent the default mini-infobar
-            setInstallPromptEvent(event); // Save the event for triggering later
+            event.preventDefault(); 
+            setInstallPromptEvent(event); 
         };
 
         window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
