@@ -6,8 +6,11 @@ export const config = {
   runtime: 'experimental-edge',
   maxDuration:60
 };
+import { PrismaClient } from "@prisma/client";
 import NextAuth from "next-auth"
 import GitHub from "next-auth/providers/github"
+
+const prisma = new PrismaClient();
 
 async function fetchData(userEmail)
 {
@@ -22,20 +25,15 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   session: { strategy: 'jwt' },
   callbacks: {
     async jwt({ token, user }) {
-    
-      if (user) {
-        const userDataCars = await prisma.carsData.findUnique({
-          where: { userEmail: user.email },
+      const userDataCars = await prisma.carsData.findUnique({
+        where: { userEmail: user.email },
         select: {
-            userId: true,
-            userEmail: true,
-            carsEmail: true,
-          },
+          userId: true,
+          userEmail: true,
+          carsEmail: true,
+        },
       });
-
-        token.userDataCars = userDataCars || {};
-      }
-
+      console.log(userDataCars)
       return token;
     },
     async session({ session, token }) {
