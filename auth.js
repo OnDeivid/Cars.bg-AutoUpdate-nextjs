@@ -5,16 +5,12 @@
 
 import NextAuth from "next-auth"
 import GitHub from "next-auth/providers/github"
-import { PrismaAdapter } from "@auth/prisma-adapter";
-import { prisma } from "./prismas";
 
 async function fetchData(userEmail)
 {
-  const data= await prisma.carsData.findFirst({
-    where: { userEmail: userEmail },
-    select: {
-        userId: true,
-    },
+  // https://serverchoose.vercel.app/
+  const data= await fetch(`https://serverchoose.vercel.app/`, {
+    method: 'GET',
 });
 return data || {}
 }
@@ -23,9 +19,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   providers: [GitHub],
   session: { strategy: 'jwt' },
   callbacks: {
-
     async session({ session, token }) {
-      session.user.userCarsData = await fetchData(session.user.email);
+      const res=await fetchData(session.user.email);
+      console.log(res)
       return session;
     },
   }
