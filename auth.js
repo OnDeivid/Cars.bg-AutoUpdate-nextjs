@@ -2,7 +2,7 @@
 //  import GitHub from "next-auth/providers/github"
 //  import Google from "next-auth/providers/google"
 //  import Facebook from 'next-auth/providers/facebook'
-export const runtime = "experimental-edge"
+
 
 import { PrismaClient } from "@prisma/client/edge";
 import NextAuth from "next-auth"
@@ -13,7 +13,7 @@ const prisma = new PrismaClient();
 async function fetchData(userEmail)
 {
   // https://serverchoose.vercel.app/
-  const data= await fetch(`https://serverchoose.vercel.app/getDate`, {
+  const data= await fetch(`https://serverchoose.vercel.app/`, {
     method: 'GET',
 });
 return data || {}
@@ -23,18 +23,20 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   session: { strategy: 'jwt' },
   callbacks: {
     async jwt({ token, user }) {
+      
       const userDataCars = await prisma.carsData.findUnique({
-        where: { userEmail: user.email },
+        where: { userEmail: token.email },
         select: {
           userId: true,
           userEmail: true,
           carsEmail: true,
         },
       });
-      console.log(userDataCars)
+      token.userDataCars = userDataCars || {}; 
       return token;
     },
     async session({ session, token }) {
+
       session.user.userDataCars = token.userDataCars || {};
       return session;
     },
