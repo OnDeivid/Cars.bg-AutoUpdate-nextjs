@@ -20,8 +20,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   session: { strategy: 'jwt' },
   callbacks: {
     async session({ session, token }) {
-      const res=await fetchData(session.user.email);
-      console.log(res)
+      // const res=await fetchData(session.user.email);
+      // console.log(res)
       return session;
     },
   }
