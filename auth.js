@@ -20,7 +20,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   callbacks: {
     async session({ session, token }) {
       const res=await fetchData(session.user.email);
-      console.log(res)
+      const data= await res.json()
+      console.log(data)
+      session.user.cars=data
       return session;
     },
   }
