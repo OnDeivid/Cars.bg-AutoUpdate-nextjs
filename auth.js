@@ -6,23 +6,27 @@
 import { PrismaClient } from "@prisma/client";
 import NextAuth from "next-auth"
 import GitHub from "next-auth/providers/github"
-export const maxDuration = 60
+const prisma = new PrismaClient();
+
+async function fetchData()
+{
+  const data= await prisma.carsData.findUnique({
+    where: { userEmail: session.user.email },
+    select: {
+        userId: true,
+        userEmail: true,
+        carsEmail: true,
+    },
+});
+return data || {}
+}
 export const { handlers, auth, signIn, signOut } = NextAuth({
   providers: [GitHub],
   session: { strategy: 'jwt' },
   callbacks: {
 
     async session({ session, token }) {
-      const prisma = new PrismaClient();
-      const data=await prisma.carsData.findUnique({
-            where: { userEmail: session.user.email },
-            select: {
-                userId: true,
-                userEmail: true,
-                carsEmail: true,
-            },
-        });
-        session.user.userCarsData = data||{}
+        session.user.userCarsData = await fetchData()
       return session;
     },
   }
