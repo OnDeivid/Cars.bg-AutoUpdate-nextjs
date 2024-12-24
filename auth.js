@@ -15,13 +15,12 @@ async function fetchData(userEmail)
 return data || {}
 }
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  adapter:PrismaAdapter(prisma),
   providers: [GitHub],
   session: { strategy: 'jwt' },
   callbacks: {
     async session({ session, token }) {
-      // const res=await fetchData(session.user.email);
-      // console.log(res)
+      const res=await fetchData(session.user.email);
+      console.log(res)
       return session;
     },
   }
