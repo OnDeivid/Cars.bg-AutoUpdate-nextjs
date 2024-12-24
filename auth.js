@@ -8,10 +8,10 @@ import NextAuth from "next-auth"
 import GitHub from "next-auth/providers/github"
 const prisma = new PrismaClient();
 
-async function fetchData()
+async function fetchData(userEmail)
 {
   const data= await prisma.carsData.findUnique({
-    where: { userEmail: session.user.email },
+    where: { userEmail: userEmail },
     select: {
         userId: true,
         userEmail: true,
@@ -26,7 +26,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   callbacks: {
 
     async session({ session, token }) {
-        session.user.userCarsData = await fetchData()
+      session.user.userCarsData = await fetchData(session.user.email);
       return session;
     },
   }
