@@ -3,10 +3,10 @@
 //  import Google from "next-auth/providers/google"
 //  import Facebook from 'next-auth/providers/facebook'
 
-import { PrismaClient } from "@prisma/client";
 import NextAuth from "next-auth"
 import GitHub from "next-auth/providers/github"
-const prisma = new PrismaClient();
+import { PrismaAdapter } from "@auth/prisma-adapter";
+import { prisma } from "./prismas";
 
 async function fetchData(userEmail)
 {
@@ -19,6 +19,7 @@ async function fetchData(userEmail)
 return data || {}
 }
 export const { handlers, auth, signIn, signOut } = NextAuth({
+  adapter:PrismaAdapter(prisma),
   providers: [GitHub],
   session: { strategy: 'jwt' },
   callbacks: {
