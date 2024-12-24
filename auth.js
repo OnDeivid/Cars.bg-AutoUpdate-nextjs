@@ -10,12 +10,10 @@ const prisma = new PrismaClient();
 
 async function fetchData(userEmail)
 {
-  const data= await prisma.carsData.findUnique({
+  const data= await prisma.carsData.findFirst({
     where: { userEmail: userEmail },
     select: {
         userId: true,
-        userEmail: true,
-        carsEmail: true,
     },
 });
 return data || {}
