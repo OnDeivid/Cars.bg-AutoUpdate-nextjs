@@ -7,12 +7,12 @@ export const maxDuration = 60
 
 export async function POST(req) {
     const { userEmail } = await req.json();
-    if (password !== confirmPassword) {
-        return new Response(
-            JSON.stringify({ success: false, error: "Passwords do not match" }),
-            { status: 400 }
-        );
-    }
+    // if (password !== confirmPassword) {
+    //     return new Response(
+    //         JSON.stringify({ success: false, error: "Passwords do not match" }),
+    //         { status: 400 }
+    //     );
+    // }
 
     try {
 
