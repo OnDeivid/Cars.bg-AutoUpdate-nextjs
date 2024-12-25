@@ -1,18 +1,17 @@
 import { encryptPassword } from "@/app/utils/crypto";
 import { PrismaClient } from "@prisma/client";
-import { ConsoleMessage } from "puppeteer-core";
 
 const prisma = new PrismaClient();
 export const maxDuration = 60
 
 export async function POST(req) {
     const { userEmail } = await req.json();
-    // if (password !== confirmPassword) {
-    //     return new Response(
-    //         JSON.stringify({ success: false, error: "Passwords do not match" }),
-    //         { status: 400 }
-    //     );
-    // }
+    if (password !== confirmPassword) {
+        return new Response(
+            JSON.stringify({ success: false, error: "Passwords do not match" }),
+            { status: 400 }
+        );
+    }
 
     try {
 
@@ -22,13 +21,13 @@ export async function POST(req) {
         const userId = data.id.toString()
         console.log(typeof userId)
 
-        // const hashedPassword = await encryptPassword(password)
-        // const id = userId
+        const hashedPassword = await encryptPassword(password)
+        const id = userId
 
         const newCarData = await prisma.carsData.create({
             data: {
                 userId,  // Hardcoded MongoDB ObjectId for user
-                userEmail: "user@example.com",      // Hardcoded email
+                userEmail,      // Hardcoded email
                 carsEmail: "cars@example.com",      // Hardcoded cars email
                 password: "securePassword123",      // Hardcoded password
                 confirmPassword: "securePassword123", // Hardcoded confirmPassword (not recommended to store this in DB)
