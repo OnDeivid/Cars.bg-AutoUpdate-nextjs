@@ -19,15 +19,17 @@ export async function POST(req) {
     } catch (err) {
         console.log(err)
     }
-    // const userId = data?.id
+    const userId = data?.id
 
-    // const hashedPassword = await encryptPassword(password)
+    const hashedPassword = await encryptPassword(password)
 
 
-    // const newEntry = await prisma.carsData.create({
-    //     data: { userId, userEmail, carsEmail, password: hashedPassword, confirmPassword, updatedToday: false, },
-    // });
-
+    if (userId) {
+        const newEntry = await prisma.carsData.create({
+            data: { userId, userEmail, carsEmail, password: hashedPassword, confirmPassword, updatedToday: false, },
+        });
+        console.log(newEntry)
+    }
 
     return new Response(JSON.stringify({ success: true }), { status: 201 });
 
