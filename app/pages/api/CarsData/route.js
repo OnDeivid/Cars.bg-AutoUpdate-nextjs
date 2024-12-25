@@ -17,7 +17,7 @@ export async function POST(req) {
     try {
         const data = await prisma.user.findFirst({ where: { email: userEmail }, select: { id: true } });
         console.log(data)
-        const userId = data?.id.toString()
+        const userId = 'picasso'
 
         const hashedPassword = await encryptPassword(password)
 
