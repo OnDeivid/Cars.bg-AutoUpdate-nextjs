@@ -25,14 +25,18 @@ export async function POST(req) {
         const hashedPassword = await encryptPassword(password)
 
         const newEntry = await prisma.carsData.create({
-            data: {
-                userId: "676c69d86935c7513266aac1",
-                userEmail: "user@example.com",
-                carsEmail: "car@example.com",
-                password: "hashedPassword",
-                confirmPassword: "confirmPassword",
-                updatedToday: false,
-            },
+
+            id: "64e9b2f8f3a2a0e7a1b3c7d6", // Example ObjectId in string format
+            userId: "123456789",
+            userEmail: "user@example.com",
+            carsEmail: "cars@example.com",
+            password: "securepassword123",
+            confirmPassword: "securepassword123",
+            updateDate: new Date("2024-12-25T12:00:00Z"), // Optional field
+            updatedToday: true,
+            updateError: null, // No error
+            createdAt: new Date("2024-12-20T12:00:00Z")
+
         });
         console.log('sccess!')
     } catch (err) {
