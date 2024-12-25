@@ -31,15 +31,15 @@ export default async function page() {
       return
     }
 
-    await fetch('http://localhost:3000/pages/api/CarsData', {
+    const response = await fetch('http://localhost:3000/pages/api/CarsData', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(formValue),
     });
-
-    await signOut({ redirectTo: endpoints.login });
+    const data = await response.json()
+    // await signOut({ redirectTo: endpoints.login });
   }
 
   return (
@@ -59,7 +59,7 @@ export default async function page() {
               <FormInputsValue />
 
               <button type="submit" className='w-full' >
-                <GetStartedLoginButton/>
+                <GetStartedLoginButton />
               </button>
 
             </form>
