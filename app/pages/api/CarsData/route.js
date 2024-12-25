@@ -1,5 +1,6 @@
 import { encryptPassword } from "@/app/utils/crypto";
 import { PrismaClient } from "@prisma/client";
+import { ConsoleMessage } from "puppeteer-core";
 
 const prisma = new PrismaClient();
 export const maxDuration = 60
@@ -16,20 +17,20 @@ export async function POST(req) {
     try {
         const data = await prisma.user.findFirst({ where: { email: userEmail }, select: { id: true } });
         console.log(data)
-    } catch (err) {
-        console.log(err)
-    }
-    const userId = data?.id
+        const userId = data?.id
 
-    const hashedPassword = await encryptPassword(password)
+        const hashedPassword = await encryptPassword(password)
 
 
-    if (userId) {
         const newEntry = await prisma.carsData.create({
             data: { userId, userEmail, carsEmail, password: hashedPassword, confirmPassword, updatedToday: false, },
         });
-        console.log(newEntry)
+        console.log('success')
+    } catch (err) {
+        console.log(err)
     }
+
+
 
     return new Response(JSON.stringify({ success: true }), { status: 201 });
 
