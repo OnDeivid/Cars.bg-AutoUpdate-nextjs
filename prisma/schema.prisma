@@ -65,16 +65,16 @@ model VerificationToken {
 }
 
 model CarsData {
-  id              String    @id @default(auto()) @map("_id") @db.ObjectId
-  userId          String   
-  userEmail       String    @unique
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId          String   @unique @db.ObjectId
+  userEmail       String   @unique
   carsEmail       String
   password        String
   confirmPassword String
   updateDate      DateTime? @default(now())
   updatedToday    Boolean?
   updateError     String?
-  createdAt       DateTime  @default(now())
+  createdAt       DateTime @default(now())
 }
 
 // Optional for WebAuthn support
