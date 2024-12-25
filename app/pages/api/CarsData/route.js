@@ -17,24 +17,33 @@ export async function POST(req) {
     try {
 
 
-        const data = await prisma.user.findFirst({ where: { email: userEmail }, select: { id: true } });
+        // const data = await prisma.user.findFirst({ where: { email: userEmail }, select: { id: true } });
 
-        const userId = data.id.toString()
-        console.log(typeof userId)
+        // const userId = data.id.toString()
+        // console.log(typeof userId)
 
-        const hashedPassword = await encryptPassword(password)
-        const id = userId
+        // const hashedPassword = await encryptPassword(password)
+        // const id = userId
 
-        const newEntry = await prisma.carsData.create({
-            id: ObjectId("676c69d86935c7513266aac1"),
-            userId: ObjectId("676c69d86935c7513266aac1"),
-            userEmail: "deivid0444d@gmail.com",
-            carsEmail: "deivid123",
-            password: "deivid123",
-            confirmPassword: "deivid123"
+        const newCarData = await prisma.carsData.create({
+            data: {
+                userId: "60f5e9d36cfd4bcead1f38db",  // Hardcoded MongoDB ObjectId for user
+                userEmail: "user@example.com",      // Hardcoded email
+                carsEmail: "cars@example.com",      // Hardcoded cars email
+                password: "securePassword123",      // Hardcoded password
+                confirmPassword: "securePassword123", // Hardcoded confirmPassword (not recommended to store this in DB)
+                updateDate: new Date(),             // Set current date and time
+                updatedToday: true,                 // Example boolean flag
+                updateError: null,                  // No error initially
+                createdAt: new Date(),              // Set current date and time
+            },
         });
-        console.log('sccess!')
+
+        console.log(newCarData)
+        console.log('success')
+
     } catch (err) {
+
         console.log(err)
     }
 
