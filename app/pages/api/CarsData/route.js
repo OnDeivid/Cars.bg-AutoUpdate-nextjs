@@ -21,7 +21,7 @@ export async function POST(req) {
         const userId = data.id.toString()
         console.log(typeof userId)
 
-        // const hashedPasswordnotString = await encryptPassword(password)
+        const hashedPassword = await encryptPassword(password)
         // const id = userId
         // const hashedPassword = hashedPasswordnotString.toString()
 
@@ -30,7 +30,7 @@ export async function POST(req) {
                 userId,  // Hardcoded MongoDB ObjectId for user
                 userEmail,      // Hardcoded email
                 carsEmail,      // Hardcoded cars email
-                password: 'hashedPassword',      // Hardcoded password
+                password: hashedPassword,      // Hardcoded password
                 confirmPassword: "securePassword123", // Hardcoded confirmPassword (not recommended to store this in DB)
                 updateDate: new Date(),             // Set current date and time
                 updatedToday: true,                 // Example boolean flag
