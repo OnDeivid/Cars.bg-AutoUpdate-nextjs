@@ -13,7 +13,7 @@ export async function POST(req) {
         );
     }
 
-    const data = await prisma.user.findUnique({ where: { email: userEmail }, select: { id: true } });
+    // const data = await prisma.user.findUnique({ where: { email: userEmail }, select: { id: true } });
     const userId = data?.id
 
     const hashedPassword = await encryptPassword(password)
