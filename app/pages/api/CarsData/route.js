@@ -15,11 +15,18 @@ export async function POST(req) {
     }
 
     try {
+
+        const userId = "1234567890abcdef12345678"; // Example userId
+        const userEmail = "user@example.com"; // Example userEmail
+        const carsEmail = "cars@example.com"; // Example carsEmail
+        const hashedPassword = "hashedpassword123"; // Example hashed password
+        const confirmPassword = "hashedpassword123"; // Example confirmPassword
+
         const data = await prisma.user.findFirst({ where: { email: userEmail }, select: { id: true } });
         console.log(data)
-        const userId = data?.id
+        // const userId = data?.id
 
-        const hashedPassword = await encryptPassword(password)
+        // const hashedPassword = await encryptPassword(password)
 
 
         const newEntry = await prisma.carsData.create({
