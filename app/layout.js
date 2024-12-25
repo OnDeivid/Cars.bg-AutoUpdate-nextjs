@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Header from "./components/Header";
 import Head from "next/head";
+export const maxDuration = 5
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",

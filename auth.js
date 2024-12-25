@@ -7,7 +7,6 @@
 import { PrismaClient } from "@prisma/client";
 import NextAuth from "next-auth"
 import GitHub from "next-auth/providers/github"
-export const maxDuration=59
 const prisma = new PrismaClient();
 
 async function fetchData(userEmail)
@@ -49,7 +48,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       },
     }
 })
-
+export const maxDuration = 5
 //  export const { handlers, signIn, signOut, auth } = NextAuth({
 //    adapter: PrismaAdapter(prisma),
 //    providers: [
