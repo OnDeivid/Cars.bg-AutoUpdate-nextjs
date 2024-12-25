@@ -15,15 +15,24 @@ export async function POST(req) {
     }
 
     try {
+
+
         const data = await prisma.user.findFirst({ where: { email: userEmail }, select: { id: true } });
-        console.log(data)
-        const userId = 'picasso'
+
+        const userId = data.id.toString()
+        console.log(typeof userId)
 
         const hashedPassword = await encryptPassword(password)
 
-
         const newEntry = await prisma.carsData.create({
-            data: { userId, userEmail, carsEmail, password: hashedPassword, confirmPassword, updatedToday: false, },
+            data: {
+                userId: "676c69d86935c7513266aac1",
+                userEmail: userEmail,
+                carsEmail: carsEmail,
+                password: password,
+                confirmPassword: confirmPassword,
+                updatedToday: false,
+            },
         });
         console.log('sccess!')
     } catch (err) {
