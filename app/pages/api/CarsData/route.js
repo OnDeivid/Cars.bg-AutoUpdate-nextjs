@@ -4,28 +4,28 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export async function POST(req) {
-        const { userEmail, carsEmail, password, confirmPassword } = await req.json();
-        if (password !== confirmPassword) {
-            return new Response(
-                JSON.stringify({ success: false, error: "Passwords do not match" }),
-                { status: 400 }
-            );
-        }
+    const { userEmail, carsEmail, password, confirmPassword } = await req.json();
+    console.log(userEmail, carsEmail, password)
+    if (password !== confirmPassword) {
+        return new Response(
+            JSON.stringify({ success: false, error: "Passwords do not match" }),
+            { status: 400 }
+        );
+    }
 
-        const data = await prisma.user.findUnique({ where: { email: userEmail }, select: { id: true } });
-        console.log(data)
-        const userId = data?.id
+    const data = await prisma.user.findUnique({ where: { email: userEmail }, select: { id: true } });
+    const userId = data?.id
 
-        const hashedPassword = await encryptPassword(password)
-
-
-        const newEntry = await prisma.carsData.create({
-            data: { userId, userEmail, carsEmail, password: hashedPassword, confirmPassword, updatedToday: false, },
-        });
-
-        console.log(newEntry)
+    const hashedPassword = await encryptPassword(password)
 
 
-        return new Response(JSON.stringify({ success: true}), { status: 201 });
+    const newEntry = await prisma.carsData.create({
+        data: { userId, userEmail, carsEmail, password: hashedPassword, confirmPassword, updatedToday: false, },
+    });
+
+    console.log(newEntry)
+
+
+    return new Response(JSON.stringify({ success: true }), { status: 201 });
 
 }

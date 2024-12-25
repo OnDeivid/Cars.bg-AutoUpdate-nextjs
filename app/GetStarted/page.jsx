@@ -31,14 +31,14 @@ export default async function page() {
       return
     }
 
-    const response = await fetch('https://automation-eosin.vercel.app/pages/api/CarsData', {
+    await fetch('https://automation-eosin.vercel.app/pages/api/CarsData', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(formValue),
     });
-    const data = await response.json()
+
     // await signOut({ redirectTo: endpoints.login });
   }
 
