@@ -14,10 +14,9 @@ export async function POST(req) {
     }
 
     // const data = await prisma.user.findUnique({ where: { email: userEmail }, select: { id: true } });
-    const userId = data?.id
+    // const userId = data?.id
 
-    const hashedPassword = await encryptPassword(password)
-console.log(hashedPassword)
+    // const hashedPassword = await encryptPassword(password)
 
     // const newEntry = await prisma.carsData.create({
     //     data: { userId, userEmail, carsEmail, password: hashedPassword, confirmPassword, updatedToday: false, },
