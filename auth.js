@@ -4,7 +4,7 @@
 //  import Facebook from 'next-auth/providers/facebook'
 
 
-import { PrismaClient } from "@prisma/client/edge";
+import { PrismaClient } from "@prisma/client";
 import NextAuth from "next-auth"
 import GitHub from "next-auth/providers/github"
 
@@ -39,7 +39,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
       //   return token;
       // },
-      async session({ session, token }) {
+      async session({ session }) {
         // session.user.userDataCars = token.userDataCars || {};
         return session;
       },
