@@ -4,26 +4,47 @@
 //  import Facebook from 'next-auth/providers/facebook'
 
 
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@prisma/client/edge";
 import NextAuth from "next-auth"
 import GitHub from "next-auth/providers/github"
+
 const prisma = new PrismaClient();
 
+async function fetchData(userEmail)
+{
+  // https://serverchoose.vercel.app/
+  const data= await fetch(`https://serverchoose.vercel.app/`, {
+    method: 'GET',
+});
+return data || {}
+}
 export const { handlers, auth, signIn, signOut } = NextAuth({
   providers: [GitHub],
   session: { strategy: 'jwt' },
     callbacks: {
       async jwt({ token, user }) {
 
+        // if (user) {
+        //   const userDataCars = await prisma.carsData.findUnique({
+        //     where: { userEmail: user.email },
+        //     select: {
+        //       userId: true,
+        //       userEmail: true,
+        //       carsEmail: true,
+        //     },
+        //   });
+
+        //   token.userDataCars = userDataCars || {};
+        // }
 
         return token;
       },
       async session({ session, token }) {
+        // session.user.userDataCars = token.userDataCars || {};
         return session;
       },
     }
 })
-export const maxDuration = 60
 
 //  export const { handlers, signIn, signOut, auth } = NextAuth({
 //    adapter: PrismaAdapter(prisma),
