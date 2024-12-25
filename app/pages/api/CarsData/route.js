@@ -13,10 +13,16 @@ export async function POST(req) {
         );
     }
 
-    // const data = await prisma.user.findUnique({ where: { email: userEmail }, select: { id: true } });
+    try {
+        const data = await prisma.user.findFirst({ where: { email: userEmail }, select: { id: true } });
+        console.log(data)
+    } catch (err) {
+        console.log(err)
+    }
     // const userId = data?.id
 
     // const hashedPassword = await encryptPassword(password)
+
 
     // const newEntry = await prisma.carsData.create({
     //     data: { userId, userEmail, carsEmail, password: hashedPassword, confirmPassword, updatedToday: false, },
