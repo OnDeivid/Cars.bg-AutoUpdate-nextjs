@@ -26,7 +26,13 @@ export async function POST(req) {
         const id = userId
 
         const newEntry = await prisma.carsData.create({
-            data: { id, userId, userEmail, carsEmail, password: hashedPassword, confirmPassword, updatedToday: false, },
+            userId: "user123",
+            userEmail: "user@example.com",
+            carsEmail: "cars@example.com",
+            password: "securepassword",
+            confirmPassword: "securepassword",
+            updatedToday: true,
+            updateError: null,
         });
         console.log('sccess!')
     } catch (err) {
