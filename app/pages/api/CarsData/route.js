@@ -23,7 +23,6 @@ export async function POST(req) {
         console.log(typeof userId)
 
         const hashedPassword = await encryptPassword(password)
-        const hardcodeddata
 
         const newEntry = await prisma.carsData.create({
             data: {
