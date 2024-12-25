@@ -38,7 +38,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         }
       }catch(err)
       {
-        console.log(err)
+        console.error(err);
       }
         return token;
       },
