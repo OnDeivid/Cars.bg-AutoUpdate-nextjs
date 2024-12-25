@@ -4,7 +4,7 @@
 //  import Facebook from 'next-auth/providers/facebook'
 
 
-import { PrismaClient } from "@prisma/client/edge";
+import { PrismaClient } from "@prisma/client";
 import NextAuth from "next-auth"
 import GitHub from "next-auth/providers/github"
 
@@ -21,26 +21,33 @@ return data || {}
 export const { handlers, auth, signIn, signOut } = NextAuth({
   providers: [GitHub],
   session: { strategy: 'jwt' },
-  callbacks: {
-    async jwt({ token, user }) {
-      
-      const userDataCars = await prisma.carsData.findUnique({
-        where: { userEmail: token.email },
-        select: {
-          userId: true,
-          userEmail: true,
-          carsEmail: true,
-        },
-      });
-      token.userDataCars = userDataCars || {}; 
-      return token;
-    },
-    async session({ session, token }) {
+    callbacks: {
+      async jwt({ token, user }) {
 
-      session.user.userDataCars = token.userDataCars || {};
-      return session;
-    },
-  }
+        try{
+        if (user) {
+          const userDataCars = await prisma.carsData.findUnique({
+            where: { userEmail: user.email },
+            select: {
+              userId: true,
+              userEmail: true,
+              carsEmail: true,
+            },
+          });
+
+          token.userDataCars = userDataCars || {};
+        }
+      }catch(err)
+      {
+        console.log(err)
+      }
+        return token;
+      },
+      async session({ session, token }) {
+        session.user.userDataCars = token.userDataCars || {};
+        return session;
+      },
+    }
 })
 
 //  export const { handlers, signIn, signOut, auth } = NextAuth({
