@@ -39,7 +39,7 @@ export default async function page() {
       body: JSON.stringify(formValue),
     });
 
-    // await signOut({ redirectTo: endpoints.login });
+    await signOut({ redirectTo: endpoints.login });
   }
 
   return (
