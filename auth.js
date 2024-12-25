@@ -20,9 +20,9 @@ return data || {}
 }
 export const { handlers, auth, signIn, signOut } = NextAuth({
   providers: [GitHub],
-  session: { strategy: 'jwt' },
+  // session: { strategy: 'jwt' },
     callbacks: {
-      async jwt({ token, user }) {
+      // async jwt({ token, user }) {
 
         // if (user) {
         //   const userDataCars = await prisma.carsData.findUnique({
@@ -37,8 +37,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         //   token.userDataCars = userDataCars || {};
         // }
 
-        return token;
-      },
+      //   return token;
+      // },
       async session({ session, token }) {
         // session.user.userDataCars = token.userDataCars || {};
         return session;
