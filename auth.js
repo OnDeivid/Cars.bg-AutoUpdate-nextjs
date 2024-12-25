@@ -48,7 +48,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       },
     }
 })
-export const maxDuration = 5
+export const maxDuration = 50
 //  export const { handlers, signIn, signOut, auth } = NextAuth({
 //    adapter: PrismaAdapter(prisma),
 //    providers: [
