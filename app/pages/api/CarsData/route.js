@@ -24,7 +24,7 @@ export async function POST(req) {
         data: { userId, userEmail, carsEmail, password: hashedPassword, confirmPassword, updatedToday: false, },
     });
 
-
+    console.log(newEntry)
 
     return new Response(JSON.stringify({ success: true }), { status: 201 });
 

@@ -9,7 +9,6 @@ import MyComponent from "./OnInstallApp";
 
 export default async function Main() {
   const session = await auth();
-  console.log(session)
   const carsEmail = session?.user?.userDataCars?.carsEmail;
   return (
     <section className="text-gray-600  bg-custom-gray h-[100%] w-full body-font">
