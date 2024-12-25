@@ -2,6 +2,7 @@ import { encryptPassword } from "@/app/utils/crypto";
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
+export const maxDuration = 60
 
 export async function POST(req) {
     const { userEmail, carsEmail, password, confirmPassword } = await req.json();
