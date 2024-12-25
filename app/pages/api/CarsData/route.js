@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 export const maxDuration = 60
 
 export async function POST(req) {
-    const { userEmail, carsEmail, password, confirmPassword } = await req.json();
+    const { userEmail } = await req.json();
     if (password !== confirmPassword) {
         return new Response(
             JSON.stringify({ success: false, error: "Passwords do not match" }),
@@ -17,17 +17,17 @@ export async function POST(req) {
     try {
 
 
-        // const data = await prisma.user.findFirst({ where: { email: userEmail }, select: { id: true } });
+        const data = await prisma.user.findFirst({ where: { email: userEmail }, select: { id: true } });
 
-        // const userId = data.id.toString()
-        // console.log(typeof userId)
+        const userId = data.id.toString()
+        console.log(typeof userId)
 
         // const hashedPassword = await encryptPassword(password)
         // const id = userId
 
         const newCarData = await prisma.carsData.create({
             data: {
-                userId: "60f5e9d36cfd4bcead1f38db",  // Hardcoded MongoDB ObjectId for user
+                userId,  // Hardcoded MongoDB ObjectId for user
                 userEmail: "user@example.com",      // Hardcoded email
                 carsEmail: "cars@example.com",      // Hardcoded cars email
                 password: "securePassword123",      // Hardcoded password
