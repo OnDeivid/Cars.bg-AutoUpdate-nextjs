@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 export const maxDuration = 60
 
 export async function POST(req) {
-    const { userEmail } = await req.json();
+    const { userEmail, carsEmail } = await req.json();
     // if (password !== confirmPassword) {
     //     return new Response(
     //         JSON.stringify({ success: false, error: "Passwords do not match" }),
@@ -28,7 +28,7 @@ export async function POST(req) {
             data: {
                 userId,  // Hardcoded MongoDB ObjectId for user
                 userEmail,      // Hardcoded email
-                carsEmail: "cars@example.com",      // Hardcoded cars email
+                carsEmail,      // Hardcoded cars email
                 password: "securePassword123",      // Hardcoded password
                 confirmPassword: "securePassword123", // Hardcoded confirmPassword (not recommended to store this in DB)
                 updateDate: new Date(),             // Set current date and time
