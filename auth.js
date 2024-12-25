@@ -15,27 +15,10 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     callbacks: {
       async jwt({ token, user }) {
 
-        try{
-        if (user) {
-          const userDataCars = await prisma.carsData.findUnique({
-            where: { userEmail: user.email },
-            select: {
-              userId: true,
-              userEmail: true,
-              carsEmail: true,
-            },
-          });
 
-          token.userDataCars = userDataCars || {};
-        }
-      }catch(err)
-      {
-        console.log(err)
-      }
         return token;
       },
       async session({ session, token }) {
-        session.user.userDataCars = token.userDataCars || {};
         return session;
       },
     }
