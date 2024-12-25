@@ -21,8 +21,8 @@ export async function POST(req) {
         const userId = data.id.toString()
         console.log(typeof userId)
 
-        const hashedPassword = await encryptPassword(password)
-        const id = userId
+        // const hashedPassword = await encryptPassword(password)
+        // const id = userId
 
         const newCarData = await prisma.carsData.create({
             data: {
