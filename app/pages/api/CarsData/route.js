@@ -23,14 +23,15 @@ export async function POST(req) {
         console.log(typeof userId)
 
         const hashedPassword = await encryptPassword(password)
+        const hardcodeddata
 
         const newEntry = await prisma.carsData.create({
             data: {
                 userId: "676c69d86935c7513266aac1",
-                userEmail: "picasso123",
-                carsEmail: "picasso123",
-                password: password,
-                confirmPassword: confirmPassword,
+                userEmail: "user@example.com",
+                carsEmail: "car@example.com",
+                password: "hashedPassword",
+                confirmPassword: "confirmPassword",
                 updatedToday: false,
             },
         });
