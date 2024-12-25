@@ -9,14 +9,6 @@ import NextAuth from "next-auth"
 import GitHub from "next-auth/providers/github"
 const prisma = new PrismaClient();
 
-async function fetchData(userEmail)
-{
-  // https://serverchoose.vercel.app/
-  const data= await fetch(`https://serverchoose.vercel.app/`, {
-    method: 'GET',
-});
-return data || {}
-}
 export const { handlers, auth, signIn, signOut } = NextAuth({
   providers: [GitHub],
   session: { strategy: 'jwt' },
@@ -38,7 +30,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         }
       }catch(err)
       {
-        console.error(err);
+        console.log(err)
       }
         return token;
       },
@@ -48,7 +40,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       },
     }
 })
-export const maxDuration = 9
+export const maxDuration = 60
+
 //  export const { handlers, signIn, signOut, auth } = NextAuth({
 //    adapter: PrismaAdapter(prisma),
 //    providers: [
