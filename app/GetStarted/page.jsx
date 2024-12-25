@@ -31,7 +31,7 @@ export default async function page() {
       return
     }
 
-    await fetch('http://localhost:3000/pages/api/CarsData', {
+    await fetch('https://automation-eosin.vercel.app/pages/api/CarsData', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ export default async function page() {
       body: JSON.stringify(formValue),
     });
 
-    // await signOut({ redirectTo: endpoints.login });
+    await signOut({ redirectTo: endpoints.login });
   }
 
   return (
