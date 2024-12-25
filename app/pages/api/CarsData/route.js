@@ -21,16 +21,16 @@ export async function POST(req) {
         const userId = data.id.toString()
         console.log(typeof userId)
 
-        const hashedPasswordnotString = await encryptPassword(password)
+        // const hashedPasswordnotString = await encryptPassword(password)
         // const id = userId
-        const hashedPassword = hashedPasswordnotString.toString()
+        // const hashedPassword = hashedPasswordnotString.toString()
 
         const newCarData = await prisma.carsData.create({
             data: {
                 userId,  // Hardcoded MongoDB ObjectId for user
                 userEmail,      // Hardcoded email
                 carsEmail,      // Hardcoded cars email
-                password: 'deivid123s',      // Hardcoded password
+                password: 'hashedPassword',      // Hardcoded password
                 confirmPassword: "securePassword123", // Hardcoded confirmPassword (not recommended to store this in DB)
                 updateDate: new Date(),             // Set current date and time
                 updatedToday: true,                 // Example boolean flag
