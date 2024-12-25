@@ -16,7 +16,7 @@ export async function POST(req) {
 
     const data = await prisma.user.findUnique({ where: { email: userEmail }, select: { id: true } });
     const userId = data?.id
-
+    console.log(data)
     const hashedPassword = await encryptPassword(password)
 
 
@@ -24,7 +24,6 @@ export async function POST(req) {
         data: { userId, userEmail, carsEmail, password: hashedPassword, confirmPassword, updatedToday: false, },
     });
 
-    console.log(newEntry)
 
 
     return new Response(JSON.stringify({ success: true }), { status: 201 });
