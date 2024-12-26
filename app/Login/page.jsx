@@ -1,9 +1,11 @@
 import { signIn, signOut } from "@/auth"
 import ProviderOption from "../components/ProviderOption"
+import { Authenticated } from "../middleware"
 
 
 
 export default async function page() {
+    await Authenticated()
 
     return (
         <section className="flex pt-20">
