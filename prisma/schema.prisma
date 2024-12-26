@@ -70,7 +70,6 @@ model CarsData {
   userEmail       String   @unique
   carsEmail       String
   password        String
-  confirmPassword String
   updateDate      DateTime? @default(now())
   updatedToday    Boolean?
   updateError     String?
