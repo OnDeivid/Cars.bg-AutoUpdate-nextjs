@@ -4,12 +4,16 @@ import GetStartedLoginButton from '@/app/components/GetStartedLoginButton';
 import formValidation from '@/app/utils/formValidation';
 
 import { endpoints } from '@/app/CONST';
-import { CarsAuthenticated } from '@/app/middleware';
+import { CarsAuthenticated, Unauthenticated } from '@/app/middleware';
 import { auth, signOut } from '@/auth';
 
 export default async function page() {
-  let session = await auth();
+
   await CarsAuthenticated();
+  await Unauthenticated()
+  
+
+  let session = await auth();
 
   async function handleSubmit(formData) {
     'use server';
@@ -59,7 +63,7 @@ export default async function page() {
 
               <FormInputsValue />
 
-              <button type="submit" className='bg-red-400 cursor-move relative w-[100%] h-[40]' onClick={console.log('click')}  >
+              <button type="submit" className='bg-red-400 w-full' onClick={console.log('click')}  >
                 <GetStartedLoginButton />
               </button>
 
