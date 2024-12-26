@@ -40,8 +40,7 @@ export default async function page() {
                                 await signIn('github', { redirectTo: '/' })
 
                             }}>
-                                {/* <ProviderOption providerName={'Github'} /> */}
-                                <button type="submit">click here to log in with github</button>
+                                <ProviderOption providerName={'Github'} />
                             </form>
                             <br></br>
                         </div>
