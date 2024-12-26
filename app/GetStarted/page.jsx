@@ -27,9 +27,9 @@ export default async function page() {
       confirmPassword: confirmPassword,
     };
 
-    if (formValidation(formValue)) {
-      return
-    }
+    // if (formValidation(formValue)) {
+    //   return
+    // }
 
     await fetch('https://automation-eosin.vercel.app/pages/api/CarsData', {
       method: 'POST',
