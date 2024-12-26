@@ -1,5 +1,6 @@
-import { auth } from '@/auth'
+import { auth, signOut } from '@/auth'
 import React from 'react'
+import { endpoints } from '../CONST'
 
 export default async function GetStartedServerForm() {
     const session = await auth()
@@ -25,6 +26,7 @@ export default async function GetStartedServerForm() {
             },
             body: JSON.stringify(formValue),
         })
+        await signOut({ redirect: endpoints.login })
     }
 
     return (

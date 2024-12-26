@@ -7,8 +7,6 @@ import { endpoints } from '@/app/CONST';
 import { CarsAuthenticated } from '@/app/middleware';
 import { auth, signOut } from '@/auth';
 
-
-
 export default async function page() {
   let session = await auth();
   await CarsAuthenticated();
@@ -27,9 +25,9 @@ export default async function page() {
       confirmPassword: confirmPassword,
     };
 
-    // if (formValidation(formValue)) {
-    //   return
-    // }
+    if (formValidation(formValue)) {
+      return
+    }
 
     const response = await fetch('https://automation-eosin.vercel.app/pages/api/CarsData', {
       method: 'POST',
@@ -38,8 +36,11 @@ export default async function page() {
       },
       body: JSON.stringify(formValue),
     });
-    console.log(response)
     await signOut({ redirectTo: endpoints.login });
+    if (session.user) {
+      await signOut({ redirectTo: endpoints.login });
+
+    }
   }
 
   return (
@@ -58,7 +59,7 @@ export default async function page() {
 
               <FormInputsValue />
 
-              <button type="submit" className='w-full' >
+              <button type="submit" className='bg-red-400 cursor-move relative w-[100%] h-[40]' onClick={console.log('click')}  >
                 <GetStartedLoginButton />
               </button>
 
