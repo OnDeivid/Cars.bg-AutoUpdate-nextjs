@@ -80,7 +80,6 @@ export default async function UpdateButton() {
             body: JSON.stringify({ session: session }),
         });
 
-        return 'here we go again'
     }
 
     return (

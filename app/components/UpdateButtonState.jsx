@@ -45,14 +45,18 @@ export default function UpdateButtonState({ update }) {
         localStorage.setItem('updateCars', 'true');
         setUpdated(true);
 
-        const result = await update();
+        try {
+            const result = await update();
 
-        setRes(result.toString())
-        localStorage.setItem('reqRes', result.toString())
-        if (!result) {
-            const currentTimer = new Date();
-            const futureTimer = new Date(currentTimer.getTime() + 20 * 1000);
-            localStorage.setItem('futureTimer', futureTimer.toISOString());
+            setRes('true')
+            localStorage.setItem('reqRes', result.toString())
+            if (!result) {
+                const currentTimer = new Date();
+                const futureTimer = new Date(currentTimer.getTime() + 20 * 1000);
+                localStorage.setItem('futureTimer', futureTimer.toISOString());
+            }
+        } catch (err) {
+            setRes('false')
         }
     };
 
