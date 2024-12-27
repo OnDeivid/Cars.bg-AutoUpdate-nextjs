@@ -45,18 +45,14 @@ export default function UpdateButtonState({ update }) {
         localStorage.setItem('updateCars', 'true');
         setUpdated(true);
 
-        try {
-            const result = await update();
+        const result = await update();
 
-            setRes('true')
-            localStorage.setItem('reqRes', result.toString())
-            if (!result) {
-                const currentTimer = new Date();
-                const futureTimer = new Date(currentTimer.getTime() + 20 * 1000);
-                localStorage.setItem('futureTimer', futureTimer.toISOString());
-            }
-        } catch (err) {
-            setRes('false')
+        setRes(result.toString())
+        localStorage.setItem('reqRes', result.toString())
+        if (!result) {
+            const currentTimer = new Date();
+            const futureTimer = new Date(currentTimer.getTime() + 20 * 1000);
+            localStorage.setItem('futureTimer', futureTimer.toISOString());
         }
     };
 
@@ -66,13 +62,7 @@ export default function UpdateButtonState({ update }) {
 
     return (
         <div>
-            <div
-                onClick={handleUpdate}
-                className="inline-flex items-center py-3 hover:bg-custom-input-color font-semibold tracking-tighter text-white transition-colors duration-1000 ease-in-out transform bg-orange-600 px-12 text-md md:mt-0 focus:shadow-outline focus:border focus:border-orange-500"
-            >
-                <span className="justify-center cursor-pointer">Обнови</span>
-            </div>
-            {/* {!updated ? (
+            {!updated ? (
                 <div
                     onClick={handleUpdate}
                     className="inline-flex items-center py-3 hover:bg-custom-input-color font-semibold tracking-tighter text-white transition-colors duration-1000 ease-in-out transform bg-orange-600 px-12 text-md md:mt-0 focus:shadow-outline focus:border focus:border-orange-500"
@@ -109,7 +99,7 @@ export default function UpdateButtonState({ update }) {
                         </>
                     ) : null}
                 </div>
-            )} */}
+            )}
         </div>
     );
 }
