@@ -15,14 +15,17 @@ const prisma = new PrismaClient();
       GitHub({
         clientId: process.env.AUTH_GITHUB_ID,
         clientSecret: process.env.AUTH_GITHUB_SECRET,
+        allowDangerousEmailAccountLinking:true
       }),
       Google({
         clientId: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        allowDangerousEmailAccountLinking:true
       }),
       Facebook({
         clientId: process.env.AUTH_FACEBOOK_ID,
-        clientSecret: process.env.AUTH_FACEBOOK_SECRET
+        clientSecret: process.env.AUTH_FACEBOOK_SECRET,
+        allowDangerousEmailAccountLinking:true
       })
    ],
     session: { strategy: 'jwt' },
