@@ -85,6 +85,8 @@ export default async function UpdateButton() {
 
     return (
         <>
+            <><UpdateButtonState update={onUpdate} /> <OnLocalStorageDelete onNextDay={onNextDay} /></>
+
             {/* {!data?.updatedToday ? (<><UpdateButtonState update={onUpdate} /> <OnLocalStorageDelete onNextDay={onNextDay} /></>)
                 : data?.updateError == 'success' ?
                     (<><div className='text-green-600 mt-2 font-bold uppercase'>Колите бяха успешно Обновени! </div> <OnLocalStorageDelete onNextDay={onNextDay} /></>)
@@ -92,7 +94,6 @@ export default async function UpdateButton() {
                     // (<><OnLocalStorageDelete onNextDay={onNextDay} /><div className='text-red-600 mt-2 text-md font-bold uppercase'>Грешка!: {data?.updateError}</div>
                     (<><OnLocalStorageDelete onNextDay={onNextDay} /><div className='text-red-600 mt-2 text-md font-bold uppercase'>Грешка!:error</div>
                         <span className='text-yellow-400 text-sm'>Наш служител ще се погрижи да актуализира колите вместо вас и ще разгледа проблема. Ако опитът за актуализация е неуспешен, ще се свърже с вас възможно най-скоро, за да ви окаже съдействие!</span></>)} */}
-ok i need help 
         </>
     )
 }
