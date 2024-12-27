@@ -61,27 +61,26 @@ export default async function UpdateButton() {
     const onUpdate = async () => {
         'use server'
 
-        // if (userEmail) {
-        //     if (!carsEmail) {
-        //         redirect(endpoints.getStarted)
-        //     }
-        // }
+        if (userEmail) {
+            if (!carsEmail) {
+                redirect(endpoints.getStarted)
+            }
+        }
 
-        // if (!userEmail) {
-        //     redirect(endpoints.login)
-        // }
+        if (!userEmail) {
+            redirect(endpoints.login)
+        }
 
 
-        // const response = await fetch(`http://localhost:3000/pages/api/OnCarsUpdate`, {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify({ session: session }),
-        // });
+        const response = await fetch(`http://localhost:3000/pages/api/OnCarsUpdate`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ session: session }),
+        });
 
-        // return response.ok
-        return ' we here'
+        return 'here we go again'
     }
 
     return (
