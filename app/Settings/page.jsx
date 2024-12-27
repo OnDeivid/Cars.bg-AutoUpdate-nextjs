@@ -26,7 +26,7 @@ export default async function page() {
         }
 
 
-        const response = await fetch('http://localhost:3000/pages/api/UserUpdate', {
+        const response = await fetch('https://automation-eosin.vercel.app/pages/api/UserUpdate', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
