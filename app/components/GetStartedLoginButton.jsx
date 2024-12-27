@@ -17,7 +17,8 @@ export default function GetStartedLoginButton() {
     return (
         <>
             {!onShowLoading ? (
-                <div onClick={() => { setShowLoading(true) }}
+                // onClick={() => { setShowLoading(true) }}
+                <div 
                     className="w-full dark:border-y-white relative -z-10 text-gray dark:bg-custom-white hover:bg-custom-input-color transition-all focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                 >
                     Sign in
