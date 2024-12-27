@@ -10,10 +10,9 @@ export async function PUT(req) {
     try {
         const cryptedPassword = await encryptPassword(formValue.password);
 
-        if (formValue.password != formValue.confirmPassword) {
-            return new Response(JSON.stringify({ message: 'Password mismatch !!!' }), { status: 400 });
-
-        }
+        // if (formValue.password != formValue.confirmPassword) {
+        //     return new Response(JSON.stringify({ message: 'Password mismatch !!!' }), { status: 400 });
+        // }
         const userEmail = formValue.userEmail
         const response = await prisma.carsData.update({
             where: { userEmail: userEmail },
