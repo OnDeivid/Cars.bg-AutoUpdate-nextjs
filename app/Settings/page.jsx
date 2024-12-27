@@ -26,14 +26,14 @@ export default async function page() {
         }
 
 
-        await fetch('https://automation-eosin.vercel.app/pages/api/UserUpdate', {
+        const data = await fetch('https://automation-eosin.vercel.app/pages/api/UserUpdate', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(formValue),
         });
-
+        console.log(data)
         await signOut({ redirectTo: endpoints.login });
     }
     return (

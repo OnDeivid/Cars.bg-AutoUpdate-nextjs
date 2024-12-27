@@ -17,6 +17,7 @@ export async function PUT(req) {
                 confirmPassword: formValue.password
             },
         });
+        console.log(response)
         return new Response(JSON.stringify({ message: 'Request for update sent successfully !' }), { status: 201 });
     } catch (err) {
         return new Response(JSON.stringify({ message: 'Request for update sent Unsuccessfully !!!' }), { status: 400 });
