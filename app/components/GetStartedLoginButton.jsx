@@ -4,15 +4,15 @@ import React, { useState, useEffect } from 'react';
 export default function GetStartedLoginButton() {
     const [onShowLoading, setShowLoading] = useState(false);
 
-    useEffect(() => {
-        if (onShowLoading) {
-            const timer = setTimeout(() => {
-                setShowLoading(false);
-            }, 5000);
+    // useEffect(() => {
+    //     if (onShowLoading) {
+    //         const timer = setTimeout(() => {
+    //             setShowLoading(false);
+    //         }, 5000);
 
-            return () => clearTimeout(timer);
-        }
-    }, [onShowLoading]);
+    //         return () => clearTimeout(timer);
+    //     }
+    // }, [onShowLoading]);
 
     return (
         <>
