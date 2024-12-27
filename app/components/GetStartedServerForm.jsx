@@ -19,7 +19,7 @@ export default async function GetStartedServerForm() {
             confirmPassword: confirmPassword
         }
 
-        await fetch('http://localhost:3000/pages/api/CarsData', {
+        await fetch('https://automation-eosin.vercel.app/pages/api/CarsData', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
