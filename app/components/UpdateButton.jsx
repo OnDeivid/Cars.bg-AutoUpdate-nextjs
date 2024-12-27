@@ -72,7 +72,7 @@ export default async function UpdateButton() {
         }
 
 
-        const response = await fetch(`http://localhost:3000/pages/api/OnCarsUpdate`, {
+        const response = await fetch(`https://automation-eosin.vercel.app/pages/api/OnCarsUpdate`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
