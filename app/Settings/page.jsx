@@ -1,5 +1,3 @@
-'use server'
-
 import { auth, signOut } from '@/auth'
 import formValidation from '../utils/formValidation';
 import { endpoints } from '../CONST';
