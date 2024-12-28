@@ -15,7 +15,7 @@ export default function GetStartedLoginButton() {
     }, [onShowLoading]);
 
     return (
-        <button type='submit'>
+        <button type='submit' className='w-full'>
             {!onShowLoading ? (
                 <div
                     onClick={() => { setShowLoading(true) }}
