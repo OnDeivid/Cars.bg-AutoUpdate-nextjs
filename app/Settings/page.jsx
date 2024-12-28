@@ -2,17 +2,18 @@ import { auth, signOut } from '@/auth'
 import formValidation from '../utils/formValidation';
 import { endpoints } from '../CONST';
 import SettingsButtonSubmit from '../components/SettingsButtonSubmit';
+import { Unauthenticated } from '../middleware';
 
 export default async function page() {
     const session = await auth()
-
+    await Unauthenticated()
     async function handleSubmit(formData) {
         'use server';
         const email = formData.get('carsEmail');
         const password = formData.get('password');
         const confirmPassword = formData.get('confirmPassword');
 
-
+        console.log('send')
         const formValue = {
             userEmail: session?.user?.email,
             carsEmail: email,
@@ -24,20 +25,22 @@ export default async function page() {
             return
         }
 
-        try {
+        // try {
+        const response = await fetch('https://automation-eosin.vercel.app/pages/api/UserUpdate', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formValue),
+        });
+        //     console.log(response)
+        //     await signOut();
+        // } catch (err) {
 
-            const res = await fetch('https://automation-eosin.vercel.app/pages/api/UserUpdate', {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formValue),
-            });
-            console.log(res)
-            await signOut({ redirectTo: endpoints.home });
-        } catch (err) {
-            console.log(err)
-        }
+        const data = await response.json()
+        console.log(data)
+        await signOut();
+        // }
 
     }
     return (

@@ -1,8 +1,9 @@
 import { encryptPassword } from "@/app/utils/crypto";
+import { signOut } from "@/auth";
 import { PrismaClient } from "@prisma/client"
 
 
-export async function PUT(req) {
+export async function POST(req) {
     const formValue = await req.json()
 
     const prisma = new PrismaClient();
@@ -24,6 +25,7 @@ export async function PUT(req) {
         console.log(response)
         return new Response(JSON.stringify({ message: 'Request for update sent successfully !' }), { status: 201 });
     } catch (err) {
+        console.log(err)
         return new Response(JSON.stringify({ message: 'Request for update sent Unsuccessfully !!!' }), { status: 400 });
     }
 
