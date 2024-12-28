@@ -59,9 +59,7 @@ export default async function page() {
 
               <FormInputsValue />
 
-              <button type="submit" className='bg-red-500 z-20 w-full'>
-                <GetStartedLoginButton />
-              </button>
+              <GetStartedLoginButton />
 
             </form>
           </div>
