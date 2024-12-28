@@ -60,7 +60,7 @@ export default function FormInputsValue({ error }) {
                 </label>
                 <input
                     onChange={onChangeValue}
-                    type="password"
+                    type="username"
                     name="password"
                     id="password"
                     placeholder="••••••••"
@@ -80,7 +80,7 @@ export default function FormInputsValue({ error }) {
                 </label>
                 <input
                     onChange={onChangeValue}
-                    type="password"
+                    type="username"
                     name="confirmPassword"
                     id="confirmPassword"
                     placeholder="••••••••"
