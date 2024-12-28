@@ -34,7 +34,7 @@ export default async function page() {
                 body: JSON.stringify(formValue),
             });
             console.log(res)
-            await signOut({ redirectTo: endpoints.login });
+            await signOut({ redirectTo: endpoints.home });
         } catch (err) {
             console.log(err)
         }
