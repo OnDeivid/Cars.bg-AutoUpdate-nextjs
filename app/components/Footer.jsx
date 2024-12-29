@@ -1,3 +1,6 @@
+import Link from "next/link"
+import { endpoints } from "../CONST";
+
 export default function Footer() {
     return (
 
@@ -8,16 +11,16 @@ export default function Footer() {
                     </a>
                     <ul className="flex flex-nowrap p items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
                         <li>
-                            <a href="#" className="hover:underline me-4 md:me-6">About</a>
+                            <Link href={endpoints.aboutUs} className="hover:underline me-4 md:me-6">About</Link>
                         </li>
-                        <li>
+                        {/* <li>
                             <a href="#" className="hover:underline me-4 md:me-6">Privacy Policy</a>
-                        </li>
-                        <li>
+                        </li> */}
+                        {/* <li>
                             <a href="#" className="hover:underline me-4 md:me-6">Licensing</a>
-                        </li>
+                        </li> */}
                         <li>
-                            <a href="#" className="hover:underline">Contact</a>
+                            <Link href={endpoints.aboutUs} className="hover:underline">Contact</Link>
                         </li>
                     </ul>
                 </div>

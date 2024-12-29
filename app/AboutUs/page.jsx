@@ -28,7 +28,7 @@ export default function page() {
                     </div>
                 </div>
                 <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-                {/* <Image className="h-56 w-full object-cover object-top sm:h-72 md:h-96 lg:w-full lg:h-full" src="https://images.unsplash.com/photo-1538688423619-a81d3f23454b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width={500} height={500} alt="team" /> */}
+                    <Image className="h-56 w-full object-cover object-top sm:h-72 md:h-96 lg:w-full lg:h-full" src="https://images.unsplash.com/photo-1538688423619-a81d3f23454b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width={500} height={500} alt="team" />
                 </div>
             </div>
             <section className="">
@@ -41,7 +41,7 @@ export default function page() {
                                 .............
                             </h2>
                             <p className="font-heading text-center mt-2 text-3xl leading-8 font-semibold tracking-tight text-custom-white sm:text-4xl">
-                                Как работи?
+                                Как работи/Свържете се с нас
                             </p>
                         </div>
 
@@ -53,7 +53,7 @@ export default function page() {
                                             className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary-500 text-white">
                                             {/* <Image src="https://www.svgrepo.com/show/503163/api-settings.svg" width={500} height={500} alt='automation' /> */}
                                         </div>
-                                        <p className="font-heading ml-16 text-lg leading-6 font-bold text-custom-light-gray">Автоматично влизане</p>
+                                        <p className="font-heading ml-16 text-lg leading-6 font-bold text-custom-white">Автоматично влизане</p>
                                     </dt>
                                     <dd className="mt-2 ml-16 text-base text-custom-white">
                                         Автоматизацията използва паролите и имейлите, предоставени от потребителите
@@ -65,10 +65,10 @@ export default function page() {
                                             className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary-500 text-white">
                                             {/* <Image src="https://www.svgrepo.com/show/503138/webpack.svg" width={1000} height={1000} alt='action'/> */}
                                         </div>
-                                        <p className="font-heading ml-16 text-lg leading-6 font-bold text-custom-light-gray">Извършване на действия</p>
+                                        <p className="font-heading ml-16 text-lg leading-6 font-bold text-custom-white">Извършване на действия</p>
                                     </dt>
                                     <dd className="mt-2 ml-16 text-base text-custom-white">
-                                    След като се логне, автоматизацията може да изпълнява специфични действия на сайта като актуализиране на съдържание.
+                                        След като се логне, автоматизацията може да изпълнява специфични действия на сайта като актуализиране на съдържание.
                                     </dd>
                                 </div>
                                 <div className="relative">
@@ -78,10 +78,24 @@ export default function page() {
                                             {/* <Image src="https://www.svgrepo.com/show/511771/dashboard-671.svg" width={500} height={500} alt='actions'/> */}
 
                                         </div>
-                                        <p className="font-heading ml-16 text-lg leading-6 font-bold text-custom-light-gray">Пълно информирано съгласие
+                                        <p className="font-heading ml-16 text-lg leading-6 font-bold text-custom-white">Пълно информирано съгласие
                                         </p>
                                     </dt>
                                     <dd className="mt-2 ml-16 text-base text-custom-white">Всички действия, които автоматизацията изпълнява, се основават на предварително получено съгласие от потребителите. Те трябва да бъдат наясно с процеса и какво точно включва автоматизацията, като дават своето изрично съгласие преди да бъде използвана.
+                                    </dd>
+                                </div>
+
+                                <div className="relative">
+                                    <dt>
+                                        <div
+                                            className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary-500 text-white">
+                                            {/* <Image src="https://www.svgrepo.com/show/511771/dashboard-671.svg" width={500} height={500} alt='actions'/> */}
+
+                                        </div>
+                                        <p className="font-heading ml-16 text-lg leading-6 font-bold text-custom-white">Свържете се с нас
+                                        </p>
+                                    </dt>
+                                    <dd className="mt-2 ml-16 text-base text-custom-white">Email:
                                     </dd>
                                 </div>
                             </dl>

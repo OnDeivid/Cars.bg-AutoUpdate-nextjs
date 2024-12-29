@@ -36,7 +36,7 @@ export default function OnLocalStorageDelete({ onNextDay }) {
     return (
         <>
             <div className='text-white border-y-2  border-custom-input-color sm:text-sm md:text-md lg:text-lg xl:-text-xl rounded-lg uppercase p-2
-            cursor-pointer w-[40%] sm:mt-3 md:mt-3 lg:mt-3 xl:mt-4 mx-auto ' onClick={refresh}
+            cursor-pointer w-[38%] sm:mt-3 md:mt-3 lg:mt-3 xl:mt-4 mx-auto ' onClick={refresh}
             >
                 провери!
             </div>
