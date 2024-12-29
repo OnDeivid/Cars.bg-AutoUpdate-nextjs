@@ -6,6 +6,7 @@ import formValidation from '@/app/utils/formValidation';
 import { endpoints } from '@/app/CONST';
 import { CarsAuthenticated, Unauthenticated } from '@/app/middleware';
 import { auth, signOut } from '@/auth';
+import { redirect } from 'next/navigation';
 
 export default async function page() {
 
@@ -40,7 +41,8 @@ export default async function page() {
       },
       body: JSON.stringify(formValue),
     });
-    await signOut({ redirectTo: endpoints.login });
+    // await signOut({ redirectTo: endpoints.login });
+    redirect('/')
   }
 
   return (

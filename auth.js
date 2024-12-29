@@ -31,23 +31,29 @@ const prisma = new PrismaClient();
     session: { strategy: 'jwt' },
     callbacks: {
       async jwt({ token, user }) {
-
-        if (user) {
+        
+        try{
+          if (token.email&&token.name) {
           const userDataCars = await prisma.carsData.findUnique({
-            where: { userEmail: user.email },
+            where: { userEmail: token?.email },
             select: {
               userId: true,
               userEmail: true,
               carsEmail: true,
             },
           });
-
           token.userDataCars = userDataCars || {};
+        }
+
+        }catch(err)
+        {
+          console.log(err)
         }
 
         return token;
       },
       async session({ session, token }) {
+
         session.user.userDataCars = token.userDataCars || {};
         return session;
       },
