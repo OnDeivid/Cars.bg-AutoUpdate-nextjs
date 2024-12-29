@@ -22,10 +22,8 @@ export async function POST(req) {
                 password: cryptedPassword,
             },
         });
-        console.log(response)
         return new Response(JSON.stringify({ message: 'Request for update sent successfully !' }), { status: 201 });
     } catch (err) {
-        console.log(err)
         return new Response(JSON.stringify({ message: 'Request for update sent Unsuccessfully !!!' }), { status: 400 });
     }
 

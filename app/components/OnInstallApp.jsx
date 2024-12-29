@@ -6,9 +6,7 @@ export default function InstallApp() {
 
     useEffect(() => {
         const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
-        console.log(isStandalone)
         const handleBeforeInstallPrompt = (event) => {
-            console.log('beforeinstallprompt event fired:', event);
             event.preventDefault(); 
             setInstallPromptEvent(event); 
         };
@@ -22,7 +20,6 @@ export default function InstallApp() {
 
     const handleInstallClick = () => {
         if (installPromptEvent) {
-            console.log('Triggering install prompt...');
             installPromptEvent.prompt();
 
             installPromptEvent.userChoice.then((choice) => {
