@@ -29,16 +29,18 @@ export default async function page() {
     };
 
     if (formValidation(formValue)) {
+      console.log('validation Error')
       return
     }
 
-    await fetch('https://automation-eosin.vercel.app/pages/api/CarsData', {
+    const response = await fetch('https://automation-eosin.vercel.app/pages/api/CarsData', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(formValue),
     });
+    console.log(response)
     // await signOut({ redirectTo: endpoints.login });
     redirect('/')
   }
