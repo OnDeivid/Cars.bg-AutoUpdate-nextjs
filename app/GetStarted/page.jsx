@@ -10,9 +10,7 @@ import { redirect } from 'next/navigation';
 
 export default async function page() {
 
-  await CarsAuthenticated();
   await Unauthenticated()
-
 
   let session = await auth();
 
