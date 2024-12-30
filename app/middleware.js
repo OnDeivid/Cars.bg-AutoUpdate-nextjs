@@ -23,7 +23,7 @@ async function Authenticated() {
 async function CarsAuthenticated() {
     const session = await auth()
 
-    if (!session || !session?.user || session?.user.userDataCars.carsEmail) {
+    if (!session || !session?.user || !session?.user.userDataCars.carsEmail) {
         redirect(endpoints.home)
     }
     return null
