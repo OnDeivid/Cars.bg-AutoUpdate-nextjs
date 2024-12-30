@@ -19,7 +19,14 @@ async function Authenticated() {
     }
     return null
 }
+async function CarsEmailAuthenticated() {
+    const session = await auth()
+    if (session?.user?.userDataCars?.carsEmail) {
+        redirect(endpoints.home)
+    }
 
+
+}
 async function CarsAuthenticated() {
     const session = await auth()
 
@@ -29,4 +36,4 @@ async function CarsAuthenticated() {
     return null
 }
 
-export { Unauthenticated, Authenticated, CarsAuthenticated }
+export { Unauthenticated, Authenticated, CarsAuthenticated, CarsEmailAuthenticated }

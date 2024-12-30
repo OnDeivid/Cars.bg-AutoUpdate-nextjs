@@ -4,14 +4,14 @@ import GetStartedLoginButton from '@/app/components/GetStartedLoginButton';
 import formValidation from '@/app/utils/formValidation';
 
 import { endpoints } from '@/app/CONST';
-import { CarsAuthenticated, Unauthenticated } from '@/app/middleware';
+import { CarsAuthenticated, CarsEmailAuthenticated, Unauthenticated } from '@/app/middleware';
 import { auth, signOut } from '@/auth';
 import { redirect } from 'next/navigation';
 
 export default async function page() {
 
   await Unauthenticated()
-
+  await CarsEmailAuthenticated()
   let session = await auth();
 
   async function handleSubmit(formData) {
