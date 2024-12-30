@@ -3,8 +3,8 @@ import React from 'react';
 import useForm from '../hooks/useForm';
 
 
-export default function FormInputsValue({ error }) {
-    const { formValue, onChangeValue } = useForm({ carsEmail: '', password: '', confirmPassword: '' });
+export default function FormInputsValue({ userEmail_B, carsEmail_B }) {
+    const { formValue, onChangeValue } = useForm({ carsEmail: carsEmail_B ? carsEmail_B : '', password: '', confirmPassword: '' });
     const errors = {};
 
     function useFormValidation(formData) {
@@ -17,8 +17,8 @@ export default function FormInputsValue({ error }) {
             errors.password = "Паролата трябва да съдържа поне една буква.";
         } else if (!/[0-9]/.test(formData.password)) {
             errors.password = "Паролата трябва да съдържа поне една цифра.";
-        } 
-        
+        }
+
 
         if (formData.confirmPassword !== formData.password) {
             errors.confirmPassword = "Паролите не съвпадат.";
@@ -30,6 +30,8 @@ export default function FormInputsValue({ error }) {
     useFormValidation(formValue);
     return (
         <>
+            {userEmail_B ? <h3 className='text-gray-800'>Email: <span className='text-black font-medium'>{userEmail_B}</span></h3> : null}
+
             <div>
                 <label
                     htmlFor="carsEmail"
@@ -42,10 +44,13 @@ export default function FormInputsValue({ error }) {
                     type="text"
                     name="carsEmail"
                     id="carsEmail"
-                    
-                    className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-3 dark:bg-custom-white dark:border-gray-600 dark:placeholder-gray-800 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+
+                    className={!userEmail_B ? "bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-3 dark:bg-custom-white dark:border-gray-600 dark:placeholder-gray-800 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" :
+                        "bg-gray-50 border border-gray-300  text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:text-white"
+                    }
                     placeholder="Your Email, Username or Number"
                     value={formValue.carsEmail}
+
                     required
                 />
                 <p className="text-red-600 text-center pt-1 text-sm">{errors.carsEmail}</p>
@@ -60,11 +65,13 @@ export default function FormInputsValue({ error }) {
                 </label>
                 <input
                     onChange={onChangeValue}
-                    type="username"
+                    type="password"
                     name="password"
                     id="password"
                     placeholder="••••••••"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-3 dark:bg-custom-white dark:border-gray-600 dark:placeholder-gray-800 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className={!userEmail_B ? "bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-3 dark:bg-custom-white dark:border-gray-600 dark:placeholder-gray-800 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" :
+                        "bg-gray-50 border border-gray-300  text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:text-white"
+                    }
                     value={formValue.password}
                     required
                 />
@@ -80,11 +87,13 @@ export default function FormInputsValue({ error }) {
                 </label>
                 <input
                     onChange={onChangeValue}
-                    type="username"
+                    type="password"
                     name="confirmPassword"
                     id="confirmPassword"
                     placeholder="••••••••"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-3 dark:bg-custom-white dark:border-gray-600 dark:placeholder-gray-800 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className={!userEmail_B ? "bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-3 dark:bg-custom-white dark:border-gray-600 dark:placeholder-gray-800 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" :
+                        "bg-gray-50 border border-gray-300  text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:text-white"
+                    }
                     value={formValue.confirmPassword}
                     required
                 />
