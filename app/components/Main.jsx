@@ -5,25 +5,26 @@ import { auth } from "@/auth";
 import { endpoints } from "../CONST";
 
 import UpdateButton from "./UpdateButton";
-import MyComponent from "./OnInstallApp";
+import InstallButton from "./OnInstallApp";
 
 export default async function Main() {
   const session = await auth();
-  
+
   const carsEmail = session?.user?.userDataCars?.carsEmail;
   return (
     <section className="text-gray-600  bg-custom-gray h-[100%] w-full body-font">
       <div className="max-w-6xl mb-2 sm:pt-40 md:pt-48 lg:pt-48 xl:pt-48 border-custom-input-color rounded-3xl sm:-mt-11 md:mt-14 lg:-mt-1 xl:-mt-1 border-y-2 w-full bg-red pb-24 mx-auto">
-        <h1 className="text-center font-bold text-custom-white mb-2 sm:-mt-14 md:-mt-6 lg:-mt-3 xl:mt-1 text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-6xl">
+        <h1 className="text-center select-none font-bold text-custom-white mb-2 sm:-mt-14 md:-mt-6 lg:-mt-3 xl:mt-1 text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-6xl">
           Премахни скучните повтарящи се действия с нас
         </h1>
         <br />
-        <MyComponent />
 
-        <h2 className="text-xl font-4 font-semibold lh-6 ld-04 pb-11 text-gray-600 text-center">
-          ние ще опростим деня ти
-          нека свършим скучните неща вместо теб
+        {session?.user ? <InstallButton /> : null}
+
+        <h2 className="text-xl font-4 select-none font-semibold lh-6 ld-04 pb-11 text-gray-400 text-center">
+          Ние ще опростим деня ти нека свършим скучните неща вместо теб
         </h2>
+
         <br></br>
 
         <div className="ml-0 text-center">

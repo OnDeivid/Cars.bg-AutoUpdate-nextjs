@@ -37,9 +37,9 @@ export default function InstallApp() {
 
     return (
         <div>
-            {installPromptEvent ? <button className='bg-custom-input-color p-1.5 rounded-xl text-blue-700 font-semibold mt-2 mb-3 ml-3 animate-bounce-item' onClick={handleInstallClick} disabled={!installPromptEvent}>
+            {installPromptEvent ? <button className='bg-custom-input-color p-1.5 select-none rounded-xl text-blue-700 font-semibold mt-2 mb-3 ml-3 animate-bounce-item' onClick={handleInstallClick} disabled={!installPromptEvent}>
                 Install App
-            </button> : <button className='bg-custom-input-color p-1.5 rounded-xl text-blue-700 font-semibold mt-2 mb-3 ml-3' >Install App</button>}
+            </button> : <button className='bg-custom-input-color p-1.5 select-none rounded-xl text-blue-700 font-semibold mt-2 mb-3 ml-3' >Install App</button>}
         </div>
     );
 }

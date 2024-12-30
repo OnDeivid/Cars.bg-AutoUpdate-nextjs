@@ -65,9 +65,9 @@ export default function UpdateButtonState({ update }) {
             {!updated ? (
                 <div
                     onClick={handleUpdate}
-                    className="inline-flex items-center py-3 hover:bg-custom-input-color font-semibold tracking-tighter text-white transition-colors duration-1000 ease-in-out transform bg-orange-600 px-16 text-md md:mt-0 focus:shadow-outline focus:border focus:border-orange-500"
+                    className="inline-flex cursor-pointer items-center py-3 hover:bg-custom-input-color rounded-md font-semibold tracking-tighter text-custom-gray transition-colors duration-1000 ease-in-out transform bg-custom-input-color px-16 text-md md:mt-0 focus:shadow-outline focus:border focus:border-orange-500"
                 >
-                    <span className="justify-center cursor-pointer">Обнови</span>
+                    <span className="justify-center select-none cursor-pointer font-semibold uppercase">Обнови</span>
                 </div>
             ) : (
                 <div role="status">
@@ -94,7 +94,7 @@ export default function UpdateButtonState({ update }) {
                         </>
                     ) : res == 'false' ? (
                         <>
-                            <p className='text-yellow-400 text-xl'>Извиняваме се, но в момента услугата не е достъпна. Моля, опитайте отново по-късно.</p>
+                            <p className='text-yellow-400 text-lg'>Извиняваме се, но в момента услугата не е достъпна. Моля, опитайте отново по-късно.</p>
                             <p className='text-green-400 text-sm'>Изчакайте и опитайте отново това съобщение ще се самоизтрие.</p>
                         </>
                     ) : null}

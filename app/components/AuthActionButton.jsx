@@ -17,13 +17,13 @@ export default async function AuthActionButton() {
                         'use server'
                         await signOut({ redirectTo: endpoints.home })
                     }}>
-                        <button className="cursor-pointer text-gray-300 hover:text-white hover:underline pl-3 pr-3 pt-2 pb-2 font-semibold tr04 uppercase">
+                        <button className="cursor-pointer select-none text-gray-300 hover:text-white hover:underline pl-3 pr-3 pt-2 pb-2 font-semibold tr04 uppercase">
                             изход
                         </button>
                     </form>
                 </>
             ) : (
-                <Link href={endpoints.login} className="cursor-pointer text-gray-300 hover:text-white hover:underline pl-3 pr-3 pt-2 pb-2 font-semibold tr04 uppercase">
+                <Link href={endpoints.login} className="cursor-pointer select-none text-gray-300 hover:text-white hover:underline pl-3 pr-3 pt-2 pb-2 font-semibold tr04 uppercase">
                     влез
                 </Link>
             )}

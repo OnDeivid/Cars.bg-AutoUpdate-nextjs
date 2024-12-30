@@ -20,7 +20,7 @@ export default function InteractiveHeader({ children }) {
         <div className="flex flex-row  items-center justify-between md:p-1">
           <Link
             href={endpoints.home}
-            className="flex text-xl text-white font-medium mb-1 md:mb-0"
+            className="flex text-xl text-custom-light-gray  font-medium mb-1 md:mb-0"
           >AUTOMATION
           </Link>
           <button

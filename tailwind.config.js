@@ -17,7 +17,7 @@ module.exports = {
       animation: {
         'bounce-color': 'bounce-color 0.7s infinite',
         spin: 'spin 1s linear infinite',
-        'bounce-item': 'bounce-item 0.5s infinite',
+        'bounce-item': 'bounce-item 0.67s infinite',
       },
       keyframes: {
         'bounce-color': {
