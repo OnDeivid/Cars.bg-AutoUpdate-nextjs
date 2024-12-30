@@ -1,12 +1,15 @@
 import { auth, signOut } from '@/auth'
 import formValidation from '../utils/formValidation';
 import SettingsButtonSubmit from '../components/SettingsButtonSubmit';
-import { Unauthenticated } from '../middleware';
+import { CarsAuthenticated, Unauthenticated } from '../middleware';
+import FormInputsValue from '../components/FormInputsValue';
+import { redirect } from 'next/navigation';
 
 export default async function page() {
 
     const session = await auth()
     await Unauthenticated()
+    await CarsAuthenticated()
 
     async function handleSubmit(formData) {
         'use server';
@@ -33,8 +36,9 @@ export default async function page() {
             body: JSON.stringify(formValue),
         });
 
-        const data = await response.json()
-        await signOut();
+        redirect('/')
+
+        // <FormInputsValue userEmail_B={session?.user?.email} carsEmail_B={session?.user?.userCarsData?.carsEmail} />
     }
     return (
         <>
@@ -46,7 +50,7 @@ export default async function page() {
 
 
                     <form action={handleSubmit} className="max-w-sm mx-auto">
-                        <div className="mb-5">
+                        {/* <div className="mb-5">
                             
                             <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900">Потребителско Име</label>
                             <input type="username" id="carsEmail" name='carsEmail' className="bg-gray-50 border border-gray-300  text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:text-white" defaultValue={session?.user?.userDataCars?.carsEmail} required />
@@ -61,9 +65,11 @@ export default async function page() {
                         </div>
                         <div className="flex items-start mb-5">
                             <br />
-                        </div>
+                        </div> */}
 
-                        <button type='submit' className='w-full'>
+                        <FormInputsValue userEmail_B={session?.user?.email} carsEmail_B={session?.user?.userDataCars?.carsEmail} />
+
+                        <button type='submit' className='w-full mt-5'>
                             <SettingsButtonSubmit />
                         </button>
                     </form>
