@@ -21,7 +21,7 @@ export default async function Main() {
 
         {session?.user ? <InstallButton /> : null}
 
-        <h2 className="text-xl font-4 select-none font-semibold lh-6 ld-04 pb-11 text-gray-400 text-center">
+        <h2 className="text-xl font-4 select-none font-semibold lh-6 ld-04 pb-11 text-gray-600 text-center">
           Ние ще опростим деня ти нека свършим скучните неща вместо теб
         </h2>
 
