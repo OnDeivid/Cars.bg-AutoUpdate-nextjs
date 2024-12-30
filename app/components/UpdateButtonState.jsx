@@ -65,7 +65,7 @@ export default function UpdateButtonState({ update }) {
             {!updated ? (
                 <div
                     onClick={handleUpdate}
-                    className="inline-flex cursor-pointer items-center py-3 hover:bg-custom-input-color rounded-md font-semibold tracking-tighter text-custom-gray transition-colors duration-1000 ease-in-out transform bg-custom-input-color px-16 text-md md:mt-0 focus:shadow-outline focus:border focus:border-orange-500"
+                    className="inline-flex cursor-pointer mb-3 items-center mt-[5%] py-3 hover:bg-custom-input-color rounded-md font-semibold tracking-tighter text-custom-gray transition-colors duration-1000 ease-in-out transform bg-custom-input-color px-16 text-md md:mt-0 focus:shadow-outline focus:border focus:border-orange-500"
                 >
                     <span className="justify-center select-none cursor-pointer font-semibold uppercase">Обнови</span>
                 </div>
