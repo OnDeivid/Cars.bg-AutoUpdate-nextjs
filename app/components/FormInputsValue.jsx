@@ -35,7 +35,7 @@ export default function FormInputsValue({ userEmail_B, carsEmail_B }) {
             <div>
                 <label
                     htmlFor="carsEmail"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-900"
+                    className={`block mb-2 text-sm font-medium text-gray-900 ${carsEmail_B ? 'dark:text-gray-900' : 'dark:text-white'}`}
                 >
                     Името с което влизаш в cars.bg
                 </label>

@@ -47,7 +47,7 @@ const prisma = new PrismaClient();
 
         }catch(err)
         {
-        return
+        console.log(err)
         }
 
         return token;
