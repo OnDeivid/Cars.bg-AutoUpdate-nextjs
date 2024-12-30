@@ -61,7 +61,6 @@ export default async function page() {
 
               <FormInputsValue />
 
-              <button type='submit' className='w-full bg-gray-500'>Submit</button>
               <GetStartedLoginButton />
 
             </form>

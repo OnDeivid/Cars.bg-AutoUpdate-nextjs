@@ -81,7 +81,7 @@ export default function FormInputsValue({ userEmail_B, carsEmail_B }) {
                     htmlFor="confirmPassword"
                     className={`block mb-2 text-sm font-medium text-gray-900 ${carsEmail_B ? 'dark:text-gray-900' : 'dark:text-white'}`}
                 >
-                    Потвърди паролата с която влизаш в cars.bg
+                    Потвърди паролата
                 </label>
                 <input
                     onChange={onChangeValue}
