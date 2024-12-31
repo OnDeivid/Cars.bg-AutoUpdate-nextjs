@@ -64,7 +64,7 @@ export default function FormInputsValue({ userEmail_B, carsEmail_B }) {
                 </label>
                 <input
                     onChange={onChangeValue}
-                    type="username"
+                    type="password"
                     name="password"
                     id="password"
                     placeholder="••••••••"
@@ -85,7 +85,7 @@ export default function FormInputsValue({ userEmail_B, carsEmail_B }) {
                 </label>
                 <input
                     onChange={onChangeValue}
-                    type="username"
+                    type="password"
                     name="confirmPassword"
                     id="confirmPassword"
                     placeholder="••••••••"

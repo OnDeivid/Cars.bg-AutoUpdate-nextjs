@@ -5,8 +5,6 @@ import { useEffect, useState } from "react"
 export default function SettingsButtonSubmit() {
     const [state, setState] = useState(false)
 
-
-
     useEffect(() => {
         if (state) {
             const timer = setTimeout(() => {
@@ -17,7 +15,7 @@ export default function SettingsButtonSubmit() {
         }
     }, [state]);
 
-    console.log(state)
+    
     return (
         <button
             type="submit"
