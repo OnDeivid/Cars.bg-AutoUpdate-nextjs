@@ -69,9 +69,9 @@ export default async function page() {
 
                         <FormInputsValue userEmail_B={session?.user?.email} carsEmail_B={session?.user?.userDataCars?.carsEmail} />
 
-                        <button type='submit' className='w-full mt-5'>
-                            <SettingsButtonSubmit />
-                        </button>
+
+                        <SettingsButtonSubmit />
+
                     </form>
 
 
