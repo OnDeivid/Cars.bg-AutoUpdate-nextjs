@@ -2,7 +2,7 @@ import { PrismaClient } from "@prisma/client";
 
 export async function POST(req) {
     const { session } = await req.json()
-
+    
     const userEmail = session?.user.email
 
     const prisma = new PrismaClient();
@@ -25,17 +25,18 @@ export async function POST(req) {
         },
     });
     try {
-        await fetch(`http://localhost:3001/Update/${userEmail}`, {
+        const res = await fetch(`https://591d-178-254-251-51.ngrok-free.app/Update/${userEmail}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${access_token}`
             },
         });
-
+        console.log(res)
         return new Response(JSON.stringify({ message: 'Request for update sent successfully !' }), { status: 201 });
 
     } catch (err) {
+        console.log(err)
 
         return new Response(JSON.stringify({ message: 'Request for update sent Unsuccessfully !!!' }), { status: 400 });
     }

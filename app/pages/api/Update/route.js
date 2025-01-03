@@ -8,7 +8,8 @@ export async function GET(req) {
             return new Response(JSON.stringify({ error: "Unauthorized" }), { status: 401 });
         }
         const email = session.user.email;
-        const updateResponse = await fetch(`${process.env.API_URL || 'http://localhost:3001'}/update/${email}`, {
+
+        const updateResponse = await fetch(`${process.env.API_URL || 'https://591d-178-254-251-51.ngrok-free.app'}/update/${email}`, {
             method: 'GET',
         });
 
