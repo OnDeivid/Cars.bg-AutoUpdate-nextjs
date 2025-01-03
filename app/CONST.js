@@ -1,3 +1,4 @@
+const serverURL = 'https://df70-178-254-251-51.ngrok-free.app'
 
 const endpoints = {
     home: '/',
@@ -13,4 +14,4 @@ const textEndpoint = {
     aboutUs: 'Нас'
 }
 
-export { endpoints, textEndpoint };
+export { endpoints, textEndpoint, serverURL };

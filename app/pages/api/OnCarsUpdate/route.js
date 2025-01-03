@@ -1,3 +1,4 @@
+import { serverURL } from "@/app/CONST";
 import { PrismaClient } from "@prisma/client";
 
 export async function POST(req) {
@@ -25,7 +26,8 @@ export async function POST(req) {
         },
     });
     try {
-        const res = await fetch(`https://591d-178-254-251-51.ngrok-free.app/Update/${userEmail}`, {
+        
+        const res = await fetch(`${serverURL}/Update/${userEmail}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

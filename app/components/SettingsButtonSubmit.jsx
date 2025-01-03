@@ -15,7 +15,8 @@ export default function SettingsButtonSubmit() {
         }
     }, [state]);
 
-    
+    // AGENT await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64)');
+
     return (
         <button
             type="submit"
