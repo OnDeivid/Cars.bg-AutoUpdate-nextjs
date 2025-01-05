@@ -10,7 +10,7 @@ export async function GET(req) {
         }
         const email = session.user.email;
 
-        const updateResponse = await fetch(`${process.env.API_URL || `${serverURL}`}/update/${email}`, {
+        const updateResponse = await fetch(`${process.env.API_URL || serverURL}/update/${email}`, {
             method: 'GET',
         });
 
@@ -20,6 +20,7 @@ export async function GET(req) {
 
         return new Response(JSON.stringify({ success: true }), { status: 200 });
     } catch (error) {
-        return new Response(JSON.stringify({ success: false || "An error occurred" }), { status: 500 });
+        console.error("Error in GET handler:", error);
+        return new Response(JSON.stringify({ error: error.message || "An error occurred" }), { status: 500 });
     }
 }

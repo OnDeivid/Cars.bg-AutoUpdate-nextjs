@@ -27,19 +27,13 @@ export async function POST(req) {
     });
     try {
 
-
-        const response = await fetch(`${serverURL}/serverCheck/${userEmail}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${access_token}`
-            },
-        });
-
+        const response = await fetch(`${serverURL}/serverCheck`);
         if (!response.ok) {
-            throw new Error('error thrown')
+            console.log(response)
+            throw new Error('error here ')
         }
-        const res = await fetch(`${serverURL}/Update/${userEmail}`, {
+
+        await fetch(`${serverURL}/update/${userEmail}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -48,6 +42,7 @@ export async function POST(req) {
         });
 
         return new Response(JSON.stringify({ message: 'Request for update sent successfully !' }), { status: 201 });
+
     } catch (err) {
         console.log(err)
 
