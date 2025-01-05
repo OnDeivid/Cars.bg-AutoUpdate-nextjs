@@ -12,23 +12,23 @@ export default function OnLocalStorageDelete({ onNextDay, data }) {
             localStorage.removeItem('updateCars');
         }
 
-
         const intervalId = setInterval(() => {
             const updateDate = localStorage.getItem('updateDate');
             const currentDate = new Date().toDateString();
 
             if (localStorage.getItem('onUpdateButton') && data.user.userDataCars.updatedToday == false) {
-                console.log('step-1')
+
                 setCount(prev => prev + 1)
-                console.log('step-2')
-                console.log(cout)
-                console.log(data)
+                if (!localStorage.getItem('futureAutoUpdateTimer')) {
+                    const currentTimer = new Date();
+                    const futureTimer = new Date(currentTimer.getTime() + 4 * 60 * 1000);
+                    localStorage.setItem('futureAutoUpdateTimer', futureTimer.toISOString());
+                }
 
                 if (cout >= 4 && data.user.userDataCars.updatedToday == false) {
-                    console.log('step-3')
-                    console.log('update button after counter 4')
+
                     setCount(0)
-                    console.log(cout)
+
                     router.push('/')
                     router.push('/')
                 }

@@ -1,10 +1,12 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
 export default function UpdateButtonState({ update }) {
     const [updated, setUpdated] = useState(null);
     const [res, setRes] = useState('notSended')
+    const router = useRouter();
 
     useEffect(() => {
 
@@ -16,6 +18,13 @@ export default function UpdateButtonState({ update }) {
 
         const interval1 = setInterval(() => {
             // if (!localStorage.getItem('updateCars') && update) {
+            const currentTimer = new Date();
+
+            if (localStorage.getItem('futureAutoUpdateTimer') < currentTimer && localStorage.getItem('futureAutoUpdateTimer')) {
+
+                router.push('/')
+                router.push('/')
+            }
 
             if (!localStorage.getItem('updateCars')) {
                 setUpdated(false)
@@ -50,6 +59,11 @@ export default function UpdateButtonState({ update }) {
 
         setRes(result.toString())
         localStorage.setItem('reqRes', result.toString())
+        // if (localStorage.getItem('futureAutoUpdateTimer')) {
+        //     const currentTimer = new Date();
+        //     const futureTimer = new Date(currentTimer.getTime() + 4 * 60 * 1000);
+        //     localStorage.setItem('futureAutoUpdateTimer', futureTimer.toISOString());
+        // }
         if (!result) {
             const currentTimer = new Date();
             const futureTimer = new Date(currentTimer.getTime() + 20 * 1000);
