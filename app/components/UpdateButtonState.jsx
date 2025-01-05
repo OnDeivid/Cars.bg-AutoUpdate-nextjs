@@ -43,6 +43,7 @@ export default function UpdateButtonState({ update }) {
     const handleUpdate = async () => {
         localStorage.setItem('updateDate', new Date().toDateString())
         localStorage.setItem('updateCars', 'true');
+        localStorage.setItem('onUpdateButton', 'true')
         setUpdated(true);
 
         const result = await update();
@@ -70,7 +71,9 @@ export default function UpdateButtonState({ update }) {
                     <span className="justify-center select-none cursor-pointer font-semibold uppercase">Обнови</span>
                 </div>
             ) : (
-                <div role="status">
+                <div role="status" onClick={() => {
+                    localStorage.clear()
+                }}>
                     <svg
                         aria-hidden="true"
                         className="w-10 h-10 text-gray-200 animate-spin mt-3 dark:text-gray-600 mx-auto fill-blue-600"
@@ -90,7 +93,9 @@ export default function UpdateButtonState({ update }) {
                     {res == 'true' ? (
                         <>
                             <span className="sr-only">Loading...</span>
-                            <p className='text-white text-xl'>Колите скоро ще започнат да се Обновяват!</p>
+                            <p className='text-white text-lg'>Това може да отнеме няколко минути, в зависимост от броя на автомобилите.</p>
+                            <p className='text-gray-400 text-sm'>Сайтът ще се обнови автоматично, след като автомобилите бъдат актуализирани или ако възникне грешка по време на обновяването.</p>
+
                         </>
                     ) : res == 'false' ? (
                         <>

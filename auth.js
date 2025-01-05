@@ -40,6 +40,7 @@ const prisma = new PrismaClient();
               userId: true,
               userEmail: true,
               carsEmail: true,
+              updatedToday:true
             },
           });
           token.userDataCars = userDataCars || {};
