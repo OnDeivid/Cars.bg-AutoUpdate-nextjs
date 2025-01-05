@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
-export default function UpdateButtonState({ update }) {
+export default function UpdateButtonState({ update, data }) {
     const [updated, setUpdated] = useState(null);
     const [res, setRes] = useState('notSended')
     const router = useRouter();
@@ -23,10 +23,16 @@ export default function UpdateButtonState({ update }) {
             // console.log(localStorage.getItem('futureAutoUpdateTimer'))
             // console.log(currentTimer.toISOString())
             // console.log(localStorage.getItem('futureAutoUpdateTimer') < currentTimer)
-            if (localStorage.getItem('futureAutoUpdateTimer') < currentTimer.toISOString() && localStorage.getItem('futureAutoUpdateTimer')) {
+            if (localStorage.getItem('futureAutoUpdateTimer') < currentTimer.toISOString() && localStorage.getItem('futureAutoUpdateTimer') && localStorage.getItem('reqRes')) {
+
                 router.push('/')
                 router.push('/')
-                console.log('update')
+                localStorage.removeItem('futureAutoUpdateTimer')
+                if (data.user.userDataCars.updatedToday == false) {
+                    const currentTimer = new Date();
+                    const futureTimer = new Date(currentTimer.getTime() + 2 * 60 * 1000);
+                    localStorage.setItem('futureAutoUpdateTimer', futureTimer.toISOString());
+                }
             }
 
             if (!localStorage.getItem('updateCars')) {
@@ -60,7 +66,7 @@ export default function UpdateButtonState({ update }) {
         setUpdated(true);
 
         const result = await update();
-
+        console.log(result)
         setRes(result.toString())
         localStorage.setItem('reqRes', result.toString())
         // if (localStorage.getItem('futureAutoUpdateTimer')) {

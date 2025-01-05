@@ -1,6 +1,6 @@
 import { auth, signOut } from '@/auth'
 import React from 'react'
-import { endpoints } from '../CONST'
+import { endpoints, endpointURL } from '../CONST'
 
 export default async function GetStartedServerForm() {
     const session = await auth()
@@ -19,7 +19,7 @@ export default async function GetStartedServerForm() {
             confirmPassword: confirmPassword
         }
 
-        await fetch('https://automation-eosin.vercel.app/pages/api/CarsData', {
+        await fetch(`${endpointURL}/pages/api/CarsData`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

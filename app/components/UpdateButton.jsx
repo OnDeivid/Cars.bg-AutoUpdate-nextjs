@@ -2,7 +2,7 @@ import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
 import { PrismaClient } from '@prisma/client';
 
-import { endpoints } from '../CONST';
+import { endpoints, endpointURL } from '../CONST';
 
 import UpdateButtonState from './UpdateButtonState';
 import OnLocalStorageDelete from './OnLocalStorageDelete';
@@ -72,7 +72,7 @@ export default async function UpdateButton() {
         }
 
 
-        const response = await fetch(`https://automation-eosin.vercel.app/pages/api/OnCarsUpdate`, {
+        const response = await fetch(`${endpointURL}/pages/api/OnCarsUpdate`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -85,7 +85,7 @@ export default async function UpdateButton() {
 
     return (
         <>
-            {!data?.updatedToday ? (<><UpdateButtonState update={onUpdate} /> <OnLocalStorageDelete onNextDay={onNextDay} data={session} /></>)
+            {!data?.updatedToday ? (<><UpdateButtonState update={onUpdate} data={session} /> <OnLocalStorageDelete onNextDay={onNextDay} data={session} /></>)
                 : data?.updateError == 'success' ?
                     (<><div className='text-green-600 mt-2 font-bold uppercase'>Колите бяха успешно Обновени! </div> <OnLocalStorageDelete onNextDay={onNextDay} data={session} /></>)
                     :

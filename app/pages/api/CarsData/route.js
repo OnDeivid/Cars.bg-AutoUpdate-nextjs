@@ -1,17 +1,11 @@
 import { encryptPassword } from "@/app/utils/crypto";
 import { PrismaClient } from "@prisma/client";
-import { ConsoleMessage } from "puppeteer-core";
 
 const prisma = new PrismaClient();
 export const maxDuration = 60
 
 export async function POST(req) {
     const { userEmail, carsEmail, password, confirmPassword } = await req.json();
-    console.log(userEmail)
-    console.log(carsEmail)
-    console.log(password)
-    console.log(confirmPassword)
-
 
     if (password !== confirmPassword) {
         console.log('password missmatch')

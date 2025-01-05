@@ -4,6 +4,7 @@ import SettingsButtonSubmit from '../components/SettingsButtonSubmit';
 import { CarsAuthenticated, Unauthenticated } from '../middleware';
 import FormInputsValue from '../components/FormInputsValue';
 import { redirect } from 'next/navigation';
+import { endpointURL } from '../CONST';
 
 export default async function page() {
 
@@ -28,7 +29,7 @@ export default async function page() {
             return
         }
 
-        const response = await fetch('https://automation-eosin.vercel.app/pages/api/UserUpdate', {
+        const response = await fetch(`${endpointURL}/pages/api/UserUpdate`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

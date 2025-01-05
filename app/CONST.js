@@ -1,4 +1,6 @@
-const serverURL = 'https://df70-178-254-251-51.ngrok-free.app'
+const serverURL = 'https://04c2-178-254-251-51.ngrok-free.app'
+const endpointURL = 'https://automation-eosin.vercel.app'
+
 
 const endpoints = {
     home: '/',
@@ -14,4 +16,4 @@ const textEndpoint = {
     aboutUs: 'Нас'
 }
 
-export { endpoints, textEndpoint, serverURL };
+export { endpoints, textEndpoint, serverURL, endpointURL };

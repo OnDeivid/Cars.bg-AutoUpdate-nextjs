@@ -3,7 +3,7 @@ import { PrismaClient } from "@prisma/client";
 
 export async function POST(req) {
     const { session } = await req.json()
-    
+
     const userEmail = session?.user.email
 
     const prisma = new PrismaClient();
@@ -26,7 +26,19 @@ export async function POST(req) {
         },
     });
     try {
-        
+
+
+        const response = await fetch(`${serverURL}/serverCheck/${userEmail}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${access_token}`
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error('error thrown')
+        }
         const res = await fetch(`${serverURL}/Update/${userEmail}`, {
             method: 'GET',
             headers: {
@@ -34,9 +46,8 @@ export async function POST(req) {
                 'Authorization': `Bearer ${access_token}`
             },
         });
-        console.log(res)
-        return new Response(JSON.stringify({ message: 'Request for update sent successfully !' }), { status: 201 });
 
+        return new Response(JSON.stringify({ message: 'Request for update sent successfully !' }), { status: 201 });
     } catch (err) {
         console.log(err)
 

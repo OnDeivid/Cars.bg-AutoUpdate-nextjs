@@ -3,7 +3,7 @@ import FormInputsValue from '@/app/components/FormInputsValue';
 import GetStartedLoginButton from '@/app/components/GetStartedLoginButton';
 import formValidation from '@/app/utils/formValidation';
 
-import { endpoints } from '@/app/CONST';
+import { endpoints, endpointURL } from '@/app/CONST';
 import { CarsAuthenticated, CarsEmailAuthenticated, Unauthenticated } from '@/app/middleware';
 import { auth, signOut } from '@/auth';
 import { redirect } from 'next/navigation';
@@ -33,7 +33,7 @@ export default async function page() {
       return
     }
 
-    const response = await fetch('https://automation-eosin.vercel.app/pages/api/CarsData', {
+    const response = await fetch(`${endpointURL}/pages/api/CarsData`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
