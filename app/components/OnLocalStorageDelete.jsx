@@ -25,13 +25,11 @@ export default function OnLocalStorageDelete({ onNextDay, data }) {
                     localStorage.setItem('futureAutoUpdateTimer', futureTimer.toISOString());
                 }
 
-                if (cout >= 4 && data.user.userDataCars.updatedToday == false) {
-
-                    setCount(0)
-
-                    router.push('/')
-                    router.push('/')
-                }
+                // if (cout >= 4 && data.user.userDataCars.updatedToday == false) {
+                //     setCount(0)
+                //     router.push('/')
+                //     router.push('/')
+                // }
             }
 
             if (new Date(updateDate) < new Date(currentDate)) {

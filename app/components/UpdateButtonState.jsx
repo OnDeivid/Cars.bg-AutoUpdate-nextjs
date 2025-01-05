@@ -20,10 +20,13 @@ export default function UpdateButtonState({ update }) {
             // if (!localStorage.getItem('updateCars') && update) {
             const currentTimer = new Date();
 
-            if (localStorage.getItem('futureAutoUpdateTimer') < currentTimer && localStorage.getItem('futureAutoUpdateTimer')) {
-
+            // console.log(localStorage.getItem('futureAutoUpdateTimer'))
+            // console.log(currentTimer.toISOString())
+            // console.log(localStorage.getItem('futureAutoUpdateTimer') < currentTimer)
+            if (localStorage.getItem('futureAutoUpdateTimer') < currentTimer.toISOString() && localStorage.getItem('futureAutoUpdateTimer')) {
                 router.push('/')
                 router.push('/')
+                console.log('update')
             }
 
             if (!localStorage.getItem('updateCars')) {
@@ -35,6 +38,7 @@ export default function UpdateButtonState({ update }) {
             if (localStorage.getItem('futureTimer')) {
                 localStorage.removeItem('updateCars')
                 localStorage.removeItem('futureTimer')
+
                 localStorage.setItem('reqRes', 'notSended')
                 setRes('notSended')
 
