@@ -15,6 +15,9 @@ export default function formValidation(formData) {
     if (formData.confirmPassword !== formData.password) {
         return true
     }
+    if (!formData.phoneNumber || !/^(\+359|0)(87|88|89|98|99)[0-9]{7}$/.test(formData.phoneNumber)) {
+        return true;
+    }
 
     return false
 }

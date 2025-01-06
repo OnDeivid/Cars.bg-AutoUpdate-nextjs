@@ -15,12 +15,14 @@ export default async function page() {
     async function handleSubmit(formData) {
         'use server';
         const email = formData.get('carsEmail');
+        const phoneNumber = formData.get('phoneNumber')
         const password = formData.get('password');
         const confirmPassword = formData.get('confirmPassword');
 
         const formValue = {
             userEmail: session?.user?.email,
             carsEmail: email,
+            phoneNumber,
             password: password,
             confirmPassword: confirmPassword,
         };
@@ -68,8 +70,8 @@ export default async function page() {
                             <br />
                         </div> */}
 
-                        <FormInputsValue userEmail_B={session?.user?.email} carsEmail_B={session?.user?.userDataCars?.carsEmail} />
-
+                        <FormInputsValue userEmail_B={session?.user?.email} phoneNumber_B={session?.user?.userDataCars.phoneNumber} carsEmail_B={session?.user?.userDataCars?.carsEmail} />
+                        {/* user_phoneNumber={session?.user?.userDataCars.phoneNumber} */}
 
                         <SettingsButtonSubmit />
 

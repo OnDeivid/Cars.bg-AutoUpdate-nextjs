@@ -3,14 +3,16 @@ import React from 'react';
 import useForm from '../hooks/useForm';
 
 
-export default function FormInputsValue({ userEmail_B, carsEmail_B }) {
-    const { formValue, onChangeValue } = useForm({ carsEmail: carsEmail_B ? carsEmail_B : '', password: '', confirmPassword: '' });
+export default function FormInputsValue({ userEmail_B, phoneNumber_B, carsEmail_B }) {
+    const { formValue, onChangeValue } = useForm({ carsEmail: carsEmail_B ? carsEmail_B : '', password: '', confirmPassword: '', phoneNumber: phoneNumber_B ? phoneNumber_B : '0' });
     const errors = {};
 
     function useFormValidation(formData) {
+
         if (!formData?.carsEmail || formData?.carsEmail.trim() === "") {
             errors.carsEmail = "Потребителското име е задължително.";
         }
+
         if (!formData.password || formData.password.length < 8) {
             errors.password = "Паролата трябва да е поне 8 символа.";
         } else if (!/[A-Za-z]/.test(formData.password)) {
@@ -19,19 +21,27 @@ export default function FormInputsValue({ userEmail_B, carsEmail_B }) {
             errors.password = "Паролата трябва да съдържа поне една цифра.";
         }
 
-
         if (formData.confirmPassword !== formData.password) {
             errors.confirmPassword = "Паролите не съвпадат.";
+        }
+
+        if (!formData.phoneNumber || formData.phoneNumber.trim() === "") {
+            errors.phoneNumber = "Телефонният номер е задължителен.";
+        } else if (!/^(\+359|0)(87|88|89|98|99)[0-9]{7}$/.test(formData.phoneNumber)) {
+            errors.phoneNumber = "Моля, въведете валиден български телефонен номер.";
         }
 
         return errors;
     }
 
-    useFormValidation(formValue);
+    useFormValidation(formValue)
+    console.log(errors)
+
     return (
         <>
             {userEmail_B ? <h3 className='relative text-gray-800 -top-10'>Email: <span className='text-black font-medium'>{userEmail_B}</span></h3> : null}
 
+            {/* CarsEmail */}
             <div>
                 <label
                     htmlFor="carsEmail"
@@ -47,7 +57,7 @@ export default function FormInputsValue({ userEmail_B, carsEmail_B }) {
 
                     className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-3 dark:bg-custom-white dark:border-gray-600 dark:placeholder-gray-800 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
 
-                    placeholder="Your Cars.bg Username"
+                    placeholder="Потребителско Име в Cars.bg"
                     value={formValue.carsEmail}
 
                     required
@@ -55,6 +65,31 @@ export default function FormInputsValue({ userEmail_B, carsEmail_B }) {
                 <p className="text-red-600 text-center pt-1 text-sm">{errors.carsEmail}</p>
             </div>
 
+            {/* phoneNumber */}
+            <div>
+                <label
+                    htmlFor="phoneNumber"
+                    className={`block mb-2 text-sm font-medium text-gray-900 ${phoneNumber_B ? 'dark:text-gray-900' : 'dark:text-white'}`}
+                >
+                    Телефонен Номер
+                </label>
+                <input
+                    onChange={onChangeValue}
+                    type="text"
+                    name="phoneNumber"
+                    id="phoneNumber"
+
+                    className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-3 dark:bg-custom-white dark:border-gray-600 dark:placeholder-gray-800 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+
+                    placeholder="Телефонен Номер"
+                    value={formValue.phoneNumber}
+
+                    required
+                />
+                <p className="text-red-600 text-center pt-1 text-sm">{errors.phoneNumber}</p>
+            </div>
+
+            {/* password */}
             <div>
                 <label
                     htmlFor="password"
@@ -76,6 +111,7 @@ export default function FormInputsValue({ userEmail_B, carsEmail_B }) {
                 <p className='text-red-600 text-center pt-1 text-sm'>{errors.password}</p>
             </div>
 
+            {/* confirmPassword */}
             <div>
                 <label
                     htmlFor="confirmPassword"

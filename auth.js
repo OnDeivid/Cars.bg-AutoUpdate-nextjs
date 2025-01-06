@@ -40,6 +40,7 @@ const prisma = new PrismaClient();
               userId: true,
               userEmail: true,
               carsEmail: true,
+              phoneNumber:true,
               updatedToday:true
             },
           });

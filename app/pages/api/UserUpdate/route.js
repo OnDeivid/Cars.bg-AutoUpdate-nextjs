@@ -19,6 +19,7 @@ export async function POST(req) {
             where: { userEmail: userEmail },
             data: {
                 carsEmail: formValue.carsEmail,
+                phoneNumber: formValue.phoneNumber,
                 password: cryptedPassword,
             },
         });

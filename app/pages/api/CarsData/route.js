@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 export const maxDuration = 60
 
 export async function POST(req) {
-    const { userEmail, carsEmail, password, confirmPassword } = await req.json();
+    const { userEmail, carsEmail, password, confirmPassword, phoneNumber } = await req.json();
 
     if (password !== confirmPassword) {
         console.log('password missmatch')
@@ -23,7 +23,7 @@ export async function POST(req) {
         const hashedPassword = await encryptPassword(password)
 
         const newEntry = await prisma.carsData.create({
-            data: { userId, userEmail, carsEmail, password: hashedPassword, updatedToday: false, },
+            data: { userId, userEmail, carsEmail, password: hashedPassword, updatedToday: false, phoneNumber },
         });
     } catch (err) {
         console.log('Error')

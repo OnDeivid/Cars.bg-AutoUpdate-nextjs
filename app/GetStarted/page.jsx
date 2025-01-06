@@ -3,9 +3,9 @@ import FormInputsValue from '@/app/components/FormInputsValue';
 import GetStartedLoginButton from '@/app/components/GetStartedLoginButton';
 import formValidation from '@/app/utils/formValidation';
 
-import { endpoints, endpointURL } from '@/app/CONST';
-import { CarsAuthenticated, CarsEmailAuthenticated, Unauthenticated } from '@/app/middleware';
-import { auth, signOut } from '@/auth';
+import { endpointURL } from '@/app/CONST';
+import { CarsEmailAuthenticated, Unauthenticated } from '@/app/middleware';
+import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
 
 export default async function page() {
@@ -19,11 +19,13 @@ export default async function page() {
 
     const email = formData.get('carsEmail');
     const password = formData.get('password');
+    const phoneNumber = formData.get('phoneNumber')
     const confirmPassword = formData.get('confirmPassword');
 
     const formValue = {
       userEmail: session?.user?.email,
       carsEmail: email,
+      phoneNumber,
       password: password,
       confirmPassword: confirmPassword,
     };
@@ -31,18 +33,18 @@ export default async function page() {
     if (formValidation(formValue)) {
       console.log('validation Error')
       return
-    }
 
-    const response = await fetch(`${endpointURL}/pages/api/CarsData`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formValue),
-    });
-    console.log(response)
-    // await signOut({ redirectTo: endpoints.login });
-    redirect('/')
+    } else {
+      const response = await fetch(`${endpointURL}/pages/api/CarsData`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formValue),
+      });
+      // await signOut({ redirectTo: endpoints.login });
+      redirect('/')
+    }
   }
 
   return (
