@@ -41,7 +41,7 @@ export default function OnLocalStorageDelete({ onNextDay, data }) {
                 router.push('/')
             }
             setState(prev => !prev)
-        }, 600);
+        }, 60000);
         // 60000
         return () => {
             clearInterval(intervalId);
