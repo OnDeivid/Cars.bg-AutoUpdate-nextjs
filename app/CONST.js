@@ -1,4 +1,4 @@
-const serverURL = 'https://6949-178-254-251-51.ngrok-free.app'
+const serverURL = 'https://5a84-178-254-251-51.ngrok-free.app'
 const endpointURL = 'https://automation-eosin.vercel.app'
 
 
