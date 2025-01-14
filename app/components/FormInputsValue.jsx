@@ -93,7 +93,7 @@ export default function FormInputsValue({ userEmail_B, phoneNumber_B, carsEmail_
             <div>
                 <label
                     htmlFor="password"
-                    className={`block mb-2 text-sm font-medium text-gray-900 ${carsEmail_B ? 'dark:text-gray-200' : 'dark:text-white'}`}
+                    className={`block mb-2 text-sm font-medium text-gray-200 ${carsEmail_B ? 'dark:text-gray-200' : 'dark:text-white'}`}
                 >
                     Паролата с която влизаш в cars.bg
                 </label>
