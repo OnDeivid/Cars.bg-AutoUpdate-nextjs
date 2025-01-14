@@ -45,7 +45,7 @@ export default function FormInputsValue({ userEmail_B, phoneNumber_B, carsEmail_
             <div>
                 <label
                     htmlFor="carsEmail"
-                    className={`block mb-2 text-sm font-medium text-gray-900 ${carsEmail_B ? 'dark:text-gray-900' : 'dark:text-white'}`}
+                    className={`block mb-2 text-sm font-medium dark:text-white ${carsEmail_B ? 'dark:dark:text-white' : 'dark:text-white'}`}
                 >
                     Името с което влизаш в cars.bg
                 </label>
@@ -55,7 +55,7 @@ export default function FormInputsValue({ userEmail_B, phoneNumber_B, carsEmail_
                     name="carsEmail"
                     id="carsEmail"
 
-                    className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-3 dark:bg-custom-white dark:border-gray-600 dark:placeholder-gray-800 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="bg-gray-50 border border-gray-300 dark:text-white rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-3 dark:bg-custom-white dark:border-gray-600 dark:placeholder-gray-800 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
 
                     placeholder="Потребителско Име в Cars.bg"
                     value={formValue.carsEmail}
@@ -69,7 +69,7 @@ export default function FormInputsValue({ userEmail_B, phoneNumber_B, carsEmail_
             <div>
                 <label
                     htmlFor="phoneNumber"
-                    className={`block mb-2 text-sm font-medium text-gray-900 ${phoneNumber_B ? 'dark:text-gray-900' : 'dark:text-white'}`}
+                    className={`block mb-2 text-sm font-medium dark:text-white ${phoneNumber_B ? 'dark:dark:text-white' : 'dark:text-white'}`}
                 >
                     Телефонен Номер
                 </label>
@@ -79,7 +79,7 @@ export default function FormInputsValue({ userEmail_B, phoneNumber_B, carsEmail_
                     name="phoneNumber"
                     id="phoneNumber"
 
-                    className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-3 dark:bg-custom-white dark:border-gray-600 dark:placeholder-gray-800 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="bg-gray-50 border border-gray-300 dark:text-white rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-3 dark:bg-custom-white dark:border-gray-600 dark:placeholder-gray-800 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
 
                     placeholder="Телефонен Номер"
                     value={formValue.phoneNumber}
@@ -93,7 +93,7 @@ export default function FormInputsValue({ userEmail_B, phoneNumber_B, carsEmail_
             <div>
                 <label
                     htmlFor="password"
-                    className={`block mb-2 text-sm font-medium text-gray-900 ${carsEmail_B ? 'dark:text-gray-900' : 'dark:text-white'}`}
+                    className={`block mb-2 text-sm font-medium dark:text-white ${carsEmail_B ? 'dark:dark:text-white' : 'dark:text-white'}`}
                 >
                     Паролата с която влизаш в cars.bg
                 </label>
@@ -103,7 +103,7 @@ export default function FormInputsValue({ userEmail_B, phoneNumber_B, carsEmail_
                     name="password"
                     id="password"
                     placeholder="••••••••"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-3 dark:bg-custom-white dark:border-gray-600 dark:placeholder-gray-800 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="bg-gray-50 border border-gray-300 dark:text-white rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-3 dark:bg-custom-white dark:border-gray-600 dark:placeholder-gray-800 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
 
                     value={formValue.password}
                     required
@@ -115,7 +115,7 @@ export default function FormInputsValue({ userEmail_B, phoneNumber_B, carsEmail_
             <div>
                 <label
                     htmlFor="confirmPassword"
-                    className={`block mb-2 text-sm font-medium text-gray-900 ${carsEmail_B ? 'dark:text-gray-900' : 'dark:text-white'}`}
+                    className={`block mb-2 text-sm font-medium dark:text-white ${carsEmail_B ? 'dark:dark:text-white' : 'dark:text-white'}`}
                 >
                     Потвърди паролата
                 </label>
@@ -125,7 +125,7 @@ export default function FormInputsValue({ userEmail_B, phoneNumber_B, carsEmail_
                     name="confirmPassword"
                     id="confirmPassword"
                     placeholder="••••••••"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-3 dark:bg-custom-white dark:border-gray-600 dark:placeholder-gray-800 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="bg-gray-50 border border-gray-300 dark:text-white rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-3 dark:bg-custom-white dark:border-gray-600 dark:placeholder-gray-800 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
 
                     value={formValue.confirmPassword}
                     required

@@ -18,7 +18,7 @@ export default function GetStartedLoginButton() {
         <button type='submit' onClick={() => {
             if (!onShowLoading) setShowLoading(true);
         }}
-            className={!onShowLoading?'w-full dark:border-y-white relative text-gray dark:bg-custom-white hover:bg-custom-input-color transition-all focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800':
+            className={!onShowLoading?'w-full dark:border-y-white relative text-gray dark:bg-custom-white hover:bg-custom-input-color transition-all focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-primary-800':
                 'hidden'
             }>
 
