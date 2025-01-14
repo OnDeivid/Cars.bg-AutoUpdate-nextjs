@@ -51,7 +51,7 @@ export default function FormInputsValue({ userEmail_B, phoneNumber_B, carsEmail_
                 </label>
                 <input
                     onChange={onChangeValue}
-                    type="text"
+                    type="username"
                     name="carsEmail"
                     id="carsEmail"
 
@@ -69,7 +69,7 @@ export default function FormInputsValue({ userEmail_B, phoneNumber_B, carsEmail_
             <div>
                 <label
                     htmlFor="phoneNumber"
-                    className={`block mb-2 text-sm font-medium ${phoneNumber_B ? 'dark:text-gray-900' : 'dark:text-white'}`}
+                    className={`block mb-2 text-sm font-medium ${phoneNumber_B ? 'text-gray-900' : 'text-white'} dark:${phoneNumber_B ? 'text-gray-900' : 'text-white'}`}
                 >
                     Телефонен Номер
                 </label>
@@ -93,7 +93,8 @@ export default function FormInputsValue({ userEmail_B, phoneNumber_B, carsEmail_
             <div>
                 <label
                     htmlFor="password"
-                    className={`block mb-2 text-sm font-medium ${carsEmail_B ? 'dark:text-gray-900' : 'dark:text-white'}`}
+                    className={`block mb-2 text-sm font-medium ${carsEmail_B ? 'text-gray-900 dark:text-gray-900' : 'text-white dark:text-white'}`}
+
                 >
                     Паролата с която влизаш в cars.bg
                 </label>
@@ -115,7 +116,7 @@ export default function FormInputsValue({ userEmail_B, phoneNumber_B, carsEmail_
             <div>
                 <label
                     htmlFor="confirmPassword"
-                    className={`block mb-2 text-sm font-medium ${carsEmail_B ? 'dark:text-gray-900' : 'dark:text-white'}`}
+                    className={`block mb-2 text-sm font-medium ${carsEmail_B ? 'text-gray-900 dark:text-gray-900' : 'text-gray-200 dark:text-white'}`}
                 >
                     Потвърди паролата
                 </label>
