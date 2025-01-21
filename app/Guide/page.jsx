@@ -23,15 +23,10 @@ export default function Page() {
                     step: "Трета стъпка:",
                     description:
                         'Оверете се че Името което ще запишете и Паролата която ще запишете съответства на паролата и името с което влизате в cars.bg"',
-                    image: '/3.png',
-                },
-                {
-                    step: "Четвърта стъпка:",
-                    description: "Влезте отново със същата опция която избрахте първият път",
                     image: '/4.png',
                 },
                 {
-                    step: "Пета стъпка:",
+                    step: "Четвърта стъпка:",
                     description: 'Кликнете върху "Актуализиране"',
                     image: '/5.png',
                 },
@@ -54,7 +49,7 @@ export default function Page() {
 
                         />
                     </div>
-                    <div className="bg-white w-full h-1 mx-auto mt-4 p-6"></div>
+                    <div className="bg-white w-full h-1 mx-auto mt-4 p-4"></div>
                 </div>
             ))}
         </div>
