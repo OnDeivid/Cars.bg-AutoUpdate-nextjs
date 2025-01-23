@@ -95,7 +95,7 @@ export default function page() {
                                         <p className="font-heading ml-16 text-lg leading-6 font-bold text-custom-white">Свържете се с нас
                                         </p>
                                     </dt>
-                                    <dd className="mt-2 ml-16 text-base text-custom-white">Email:
+                                    <dd className="mt-2 ml-16 text-base text-custom-white">Email: automationbg431@gmail.com
                                     </dd>
                                 </div>
                             </dl>
